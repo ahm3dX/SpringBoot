@@ -1,9 +1,7 @@
-package esprit.DevUp.FoRest.Service;
+package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.accessRestaurant;
-import esprit.DevUp.FoRest.Repository.AccessRestaurantRepository;
-import lombok.AllArgsConstructor;
-import lombok.NoArgsConstructor;
+import esprit.DevUp.FoRest.Repository.GestionRestaurant.AccessRestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

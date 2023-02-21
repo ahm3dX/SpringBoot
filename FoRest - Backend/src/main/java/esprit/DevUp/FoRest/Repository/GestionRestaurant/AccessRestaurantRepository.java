@@ -1,4 +1,4 @@
-package esprit.DevUp.FoRest.Repository;
+package esprit.DevUp.FoRest.Repository.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.Restaurant;
 import esprit.DevUp.FoRest.Entity.User;

@@ -1,8 +1,7 @@
-package esprit.DevUp.FoRest.Controller;
+package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.OffreRestaurant;
 import esprit.DevUp.FoRest.Entity.ReservationPlace;
-import esprit.DevUp.FoRest.Service.IServiceReservationPlace;
+import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceReservationPlace;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;

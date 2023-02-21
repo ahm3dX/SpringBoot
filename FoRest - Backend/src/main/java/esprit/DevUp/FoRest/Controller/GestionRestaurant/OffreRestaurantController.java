@@ -1,8 +1,7 @@
-package esprit.DevUp.FoRest.Controller;
+package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.OffreRestaurant;
-import esprit.DevUp.FoRest.Entity.Restaurant;
-import esprit.DevUp.FoRest.Service.IServiceOffreRestaurant;
+import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceOffreRestaurant;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,15 +18,15 @@ public class OffreRestaurantController {
     @Autowired
     IServiceOffreRestaurant iServiceOffreRestaurant;
 
-    @GetMapping("/retrieveAlloffreRestaurant")
-    public List<OffreRestaurant> getoffreRestaurant() {
-        List<OffreRestaurant> list = iServiceOffreRestaurant.retrieveAllROffreestaurants();
+    @GetMapping("/{idrestaurant}/retrieveAlloffreRestaurant")
+    public List<OffreRestaurant> getoffreRestaurant(@PathVariable("idOffreRestaurant") Integer idrestaurant) {
+        List<OffreRestaurant> list = iServiceOffreRestaurant.retrieveAllROffreestaurants(idrestaurant);
         return list;
     }
 
-    @PostMapping("/addOffreRestaurant")
-    public OffreRestaurant addOffreRestaurant(@RequestBody OffreRestaurant offreRestaurant) {
-        OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant);
+    @PostMapping("/{idrestaurant}/addOffreRestaurant")
+    public OffreRestaurant addOffreRestaurant(@PathVariable("idrestaurant") Integer idrestaurant,@RequestBody OffreRestaurant offreRestaurant) {
+        OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant, idrestaurant);
         return r;
     }
     @DeleteMapping("/removeOffreRestaurant/{idOffreRestaurant}")

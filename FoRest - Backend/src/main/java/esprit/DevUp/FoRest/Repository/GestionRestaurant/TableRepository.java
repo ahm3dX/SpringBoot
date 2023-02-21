@@ -1,4 +1,4 @@
-package esprit.DevUp.FoRest.Repository;
+package esprit.DevUp.FoRest.Repository.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.TableRestaurant;
 import org.springframework.data.jpa.repository.JpaRepository;

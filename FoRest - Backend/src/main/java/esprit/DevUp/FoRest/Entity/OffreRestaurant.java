@@ -19,9 +19,10 @@ public class OffreRestaurant implements Serializable  {
     private Integer idOffreRestaurant;
     private String nameOffre;
     private Integer nbrDays;
-    @Enumerated(EnumType.STRING)
-    private TypeOffre typeOffre;
-
+    private Boolean BREAKFAST;
+    private Boolean LUNCH ;
+    private Boolean DINNER;
+    private Boolean payment;
     @ManyToOne
     @JsonIgnore
     Restaurant restaurant;

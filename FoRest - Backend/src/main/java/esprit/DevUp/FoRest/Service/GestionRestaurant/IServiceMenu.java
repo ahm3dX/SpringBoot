@@ -1,4 +1,4 @@
-package esprit.DevUp.FoRest.Service;
+package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.Menu;
 import esprit.DevUp.FoRest.Entity.OffreRestaurant;

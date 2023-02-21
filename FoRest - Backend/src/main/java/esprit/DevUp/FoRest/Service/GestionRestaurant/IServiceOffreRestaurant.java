@@ -1,13 +1,13 @@
-package esprit.DevUp.FoRest.Service;
+package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
 import esprit.DevUp.FoRest.Entity.OffreRestaurant;
 
 import java.util.List;
 
 public interface IServiceOffreRestaurant {
-    List<OffreRestaurant> retrieveAllROffreestaurants();
+    List<OffreRestaurant> retrieveAllROffreestaurants(Integer id);
 
-    OffreRestaurant addOffreRestaurant (OffreRestaurant u);
+    OffreRestaurant addOffreRestaurant (OffreRestaurant u,Integer id);
 
     OffreRestaurant updateOffreRestaurant (OffreRestaurant u);
 
