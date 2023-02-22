@@ -10,5 +10,5 @@ import java.util.List;
 
 @Repository
 public interface AccessRestaurantRepository extends JpaRepository<accessRestaurant,Integer> {
-List<User>findByRestaurants(Restaurant restaurants);
+
 }

@@ -21,10 +21,11 @@ public class AccessRestaurantController {
         List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllaccessRestaurant();
         return list;
     }
-
-    @PostMapping("/addaccessRestaurant")
-    public accessRestaurant addaccessRestaurant(@RequestBody accessRestaurant accessRestaurant) {
-        accessRestaurant r = serviceAccessRestaurant.addaccessRestaurant(accessRestaurant);
+    @PostMapping("/addaccessRestaurant/{iduser}/{idoffre}")
+    public accessRestaurant addaccessRestaurant(@RequestBody accessRestaurant accessRestaurant,
+                                                @PathVariable("iduser") Integer iduser,
+                                                @PathVariable("idoffre") Integer idoffre) {
+        accessRestaurant r = serviceAccessRestaurant.addaccessRestaurant(accessRestaurant,iduser,idoffre);
         return r;
     }
 

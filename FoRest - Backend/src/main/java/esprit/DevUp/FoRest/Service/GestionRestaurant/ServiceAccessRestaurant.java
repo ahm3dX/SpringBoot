@@ -1,39 +1,62 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.accessRestaurant;
+import esprit.DevUp.FoRest.Entity.*;
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.AccessRestaurantRepository;
+import esprit.DevUp.FoRest.Repository.GestionRestaurant.OffreRestaurantRepository;
+import esprit.DevUp.FoRest.Repository.GestionRestaurant.RestaurantRepository;
+import esprit.DevUp.FoRest.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalTime;
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
+
 @Service
 
 public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
     @Autowired
-    AccessRestaurantRepository restaurantRepository;
+    AccessRestaurantRepository accessRestaurantRepository;
+    @Autowired
+    UserRepository userRepository;
+    @Autowired
+    RestaurantRepository restaurantRepository;
+    @Autowired
+    OffreRestaurantRepository offreRestaurantRepository;
 
     @Override
     public List<accessRestaurant> retrieveAllaccessRestaurant() {
-        return restaurantRepository.findAll();
+        return accessRestaurantRepository.findAll();
     }
 
     @Override
-    public accessRestaurant addaccessRestaurant(accessRestaurant u) {
-        return restaurantRepository.save(u);
+    public accessRestaurant addaccessRestaurant(accessRestaurant u,Integer iduser,Integer idoffre) {
+        User user= userRepository.findById(iduser).get();
+        u.setUser(user);
+        OffreRestaurant offreRestaurant=offreRestaurantRepository.findById(idoffre).get();
+        u.setOffreRestaurant(offreRestaurant);
+        Calendar calendar = Calendar.getInstance();
+        Date currentDate = calendar.getTime();
+        calendar.add(Calendar.DAY_OF_YEAR, offreRestaurant.getNbrDays());
+        Date futureDate = calendar.getTime();
+        u.setDateEnd(futureDate);
+        u.setDateStart(currentDate);
+        return accessRestaurantRepository.save(u);
     }
 
     @Override
     public accessRestaurant updateaccessRestaurant(accessRestaurant u) {
-        return restaurantRepository.save(u);
+        return accessRestaurantRepository.save(u);
     }
 
     @Override
     public accessRestaurant retrieveaccessRestaurant(Integer idaccessRestaurant) {
-        return restaurantRepository.findById(idaccessRestaurant).orElse(null);
+        return accessRestaurantRepository.findById(idaccessRestaurant).orElse(null);
     }
 
     @Override
     public void removeaccessRestaurant(Integer idaccessRestaurant) {
-    restaurantRepository.deleteById(idaccessRestaurant);
+    accessRestaurantRepository.deleteById(idaccessRestaurant);
     }
 }

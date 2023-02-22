@@ -5,6 +5,8 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
+
 @Getter
 @Setter
 @Entity
@@ -22,7 +24,11 @@ public class OffreRestaurant implements Serializable  {
     private Boolean BREAKFAST;
     private Boolean LUNCH ;
     private Boolean DINNER;
-    private Boolean payment;
+    private Integer Prix;
+
+    @OneToMany(mappedBy = "offreRestaurant")
+    private List<accessRestaurant> accessRestaurants;
+
     @ManyToOne
     @JsonIgnore
     Restaurant restaurant;

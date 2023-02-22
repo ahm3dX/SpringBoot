@@ -6,7 +6,6 @@ import javax.persistence.*;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.Set;
 
 @Getter
 @Setter
@@ -23,10 +22,9 @@ public class accessRestaurant implements Serializable {
     private Date dateStart;
     private Date dateEnd;
     private Boolean payment;
-
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="accessRestaurant")
-    private Set<User> users;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="restaurant")
-    private Set<Restaurant> restaurants;
+    @ManyToOne
+    private User user;
+    @ManyToOne
+    private OffreRestaurant offreRestaurant;
 
 }

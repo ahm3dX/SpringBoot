@@ -16,7 +16,6 @@ public class ServiceOffreRestaurant implements IServiceOffreRestaurant {
     RestaurantRepository restaurantRepository;
     @Override
     public List<OffreRestaurant> retrieveAllROffreestaurants(Integer id) {
-        System.out.println(id);
         Restaurant restaurant= restaurantRepository.findById(id).get();
         return offrerestaurantRepository.findByRestaurant(restaurant);
     }

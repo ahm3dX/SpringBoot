@@ -2,6 +2,7 @@ package esprit.DevUp.FoRest.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
 import lombok.*;
 import javax.persistence.*;
@@ -28,8 +29,6 @@ public class User implements Serializable{
     private Date DateNaissance;
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
-
-
-    @ManyToOne
-    accessRestaurant accessRestaurant;
+    @OneToMany(mappedBy = "user")
+    private List<accessRestaurant> accessRestaurants;
 }

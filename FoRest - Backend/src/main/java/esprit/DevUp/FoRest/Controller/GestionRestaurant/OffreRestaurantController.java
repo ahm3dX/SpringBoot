@@ -19,14 +19,15 @@ public class OffreRestaurantController {
     IServiceOffreRestaurant iServiceOffreRestaurant;
 
     @GetMapping("/{idrestaurant}/retrieveAlloffreRestaurant")
-    public List<OffreRestaurant> getoffreRestaurant(@PathVariable("idOffreRestaurant") Integer idrestaurant) {
+    public List<OffreRestaurant> getoffreRestaurant(@PathVariable("idrestaurant") Integer idrestaurant) {
         List<OffreRestaurant> list = iServiceOffreRestaurant.retrieveAllROffreestaurants(idrestaurant);
         return list;
     }
 
     @PostMapping("/{idrestaurant}/addOffreRestaurant")
     public OffreRestaurant addOffreRestaurant(@PathVariable("idrestaurant") Integer idrestaurant,@RequestBody OffreRestaurant offreRestaurant) {
-        OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant, idrestaurant);
+        System.out.println(idrestaurant);
+        OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant,idrestaurant);
         return r;
     }
     @DeleteMapping("/removeOffreRestaurant/{idOffreRestaurant}")

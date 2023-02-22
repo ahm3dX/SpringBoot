@@ -7,7 +7,7 @@ import java.util.List;
 public interface IServiceAccessRestaurant {
     List<accessRestaurant> retrieveAllaccessRestaurant();
 
-    accessRestaurant addaccessRestaurant (accessRestaurant u);
+    accessRestaurant addaccessRestaurant (accessRestaurant u,Integer iduser,Integer idoffre);
 
     accessRestaurant updateaccessRestaurant (accessRestaurant u);
 
