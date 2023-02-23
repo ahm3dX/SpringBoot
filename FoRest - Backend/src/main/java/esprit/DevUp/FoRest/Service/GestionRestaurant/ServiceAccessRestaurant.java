@@ -5,16 +5,20 @@ import esprit.DevUp.FoRest.Repository.GestionRestaurant.AccessRestaurantReposito
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.OffreRestaurantRepository;
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.RestaurantRepository;
 import esprit.DevUp.FoRest.Repository.UserRepository;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import javax.transaction.Transactional;
 import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 
-@Service
 
+@Service
+@Slf4j
 public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
     @Autowired
     AccessRestaurantRepository accessRestaurantRepository;
@@ -31,6 +35,7 @@ public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
     }
 
     @Override
+    @Transactional
     public accessRestaurant addaccessRestaurant(accessRestaurant u,Integer iduser,Integer idoffre) {
         User user= userRepository.findById(iduser).get();
         u.setUser(user);
@@ -43,6 +48,17 @@ public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
         u.setDateEnd(futureDate);
         u.setDateStart(currentDate);
         return accessRestaurantRepository.save(u);
+    }
+    @Scheduled(cron = "0 0 23 * * MON-FRI")
+    public void accessIsOver() {
+        Date currentDate = new Date();
+        List<accessRestaurant> accessRestaurants = accessRestaurantRepository.findAll();
+        for (accessRestaurant accessRestaurant : accessRestaurants) {
+            if (accessRestaurant.getDateEnd().compareTo(currentDate) < 0) {
+                log.info("User {} your subscription of {} has expired", accessRestaurant.getUser().getFirstname(), accessRestaurant.getOffreRestaurant().getNameOffre());
+                accessRestaurantRepository.deleteById(accessRestaurant.getId_access_restaurant());
+            }
+        }
     }
 
     @Override

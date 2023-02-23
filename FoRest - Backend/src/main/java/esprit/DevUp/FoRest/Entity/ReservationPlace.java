@@ -18,10 +18,11 @@ public class ReservationPlace implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_reservation_place", nullable = false)
     private Integer idReservationPlace;
-    @ManyToOne
-    Restaurant _Restaurant;
+
+
     @ManyToOne
     TableRestaurant tableRestaurant;
     @ManyToOne
     Menu menu;
+
 }

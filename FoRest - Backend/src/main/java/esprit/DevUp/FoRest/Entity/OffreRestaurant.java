@@ -24,7 +24,7 @@ public class OffreRestaurant implements Serializable  {
     private Boolean BREAKFAST;
     private Boolean LUNCH ;
     private Boolean DINNER;
-    private Integer Prix;
+    private Integer price;
 
     @OneToMany(mappedBy = "offreRestaurant")
     private List<accessRestaurant> accessRestaurants;

@@ -19,6 +19,10 @@ public class TableRestaurant implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id_table_restaurant", nullable = false)
     private Integer idTableRestaurant;
+    private int number;
+    private String block;
+    private int now;
+    private int max ;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="tableRestaurant")
     @JsonIgnore

@@ -5,7 +5,6 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -23,7 +22,8 @@ public class Restaurant implements Serializable {
     private String nameRestaurant ;
     private  String addressRestaurant;
     private int nbrmaximal;
-
+    @ManyToOne
+    Restaurant restaurant;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="restaurant")
     @JsonIgnore
