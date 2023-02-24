@@ -26,10 +26,7 @@ public class Event implements Serializable {
     public state state;
     public String description;
 
-    //
-
     @OneToMany(  cascade = CascadeType.ALL)
-    @JsonIgnore
     private Set<Creno> crenos;
 
 

@@ -60,25 +60,12 @@ public class CrenoController {
         //return coursClassroomService.ajouterCoursClassroom(cc, classeId);
 
     }
+    @GetMapping("getListEvent/{id}")
+    public ResponseEntity getEventByCreno(@PathVariable int id) {
+        System.out.println("ID"+id);
+        List<Creno> event = iCrenoService.retriveCrenoEvent(id);
+        return new ResponseEntity<>(event, HttpStatus.CREATED);
 
-   @GetMapping("test/{id}")
-    public ResponseEntity<Optional<Event>> affecter(@PathVariable int id) {
-       System.out.println("ID"+id);
-
-       Optional<Event> event = iEventService.getEvent(id);
-       return new ResponseEntity<>(event, HttpStatus.CREATED);
-
-        //Optional<Creno> creno = iCrenoService.getCreno(id_creno);
-  //      List<Creno> c1 = crenoRepository.getEventFromCreno(id_event);
-    //    System.out.println("testttttttt"+c1);
-
-//            Creno c = eventRepository.findById(id_event).map(event -> {
-//                event.getCrenos().add(c1);
-//                return crenoRepository.save(c1);
-//            }).get();
- //       System.out.println("testttttttt"+c1);
-
-        }
-
+    }
 
 }

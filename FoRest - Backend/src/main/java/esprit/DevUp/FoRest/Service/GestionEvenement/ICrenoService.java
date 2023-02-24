@@ -16,8 +16,8 @@ public interface ICrenoService {
 
     void affecterCrenoEvent(int idCreno, int idEvent);
 
-//    Universite updateUniversite (Universite e);
-//    Universite retrieveUniversite (Integer idUniversite);
-//    void assignUniversiteToDepartement(Integer IdUniversite, Integer IdDepartement);
+    List<Creno> retriveCrenoEvent(int idEvent);
+
+
 }
 
