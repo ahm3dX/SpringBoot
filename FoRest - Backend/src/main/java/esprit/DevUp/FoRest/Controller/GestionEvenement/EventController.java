@@ -25,14 +25,16 @@ public class EventController {
         return new ResponseEntity<>(allEvents, HttpStatus.CREATED);
 
     }
+
     @GetMapping("get-event/{id}")
     public ResponseEntity getEvent(@PathVariable int id) {
-        System.out.println("ID"+id);
+        System.out.println("ID" + id);
 
         Optional<Event> event = iEventService.getEvent(id);
         return new ResponseEntity<>(event, HttpStatus.CREATED);
 
     }
+
     @PostMapping("addevent")
     public ResponseEntity<Event> addEvent(@RequestBody Event e) {
         System.out.println(e);
@@ -41,5 +43,17 @@ public class EventController {
 
     }
 
+    @PutMapping("validate/{idEvent}")
+    public void Validate(@PathVariable int idEvent) {
+        System.out.println("ID" + idEvent);
+        iEventService.validateAdmin(idEvent);
+    }
+
+
+    @PutMapping("deny/{idEvent}")
+    public void deny(@PathVariable int idEvent) {
+        System.out.println("ID" + idEvent);
+        iEventService.denyAdmin(idEvent);
+    }
 
 }

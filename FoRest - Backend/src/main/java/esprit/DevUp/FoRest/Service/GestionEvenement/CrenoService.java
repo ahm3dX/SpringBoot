@@ -18,8 +18,6 @@ public class CrenoService implements ICrenoService {
     CrenoRepository crenoRepository;
     EventRepository eventRepository;
 
-
-
     @Override
     public Creno addCreno(Creno c, int idEvent) {
 
@@ -58,6 +56,11 @@ public class CrenoService implements ICrenoService {
          //creno.setEvent(event);
         eventRepository.save(event);
 
+    }
+
+    @Override
+    public List<Creno> retriveCrenoEvent(int idEvent) {
+        return crenoRepository.getEventFromCreno(idEvent);
     }
 
 
