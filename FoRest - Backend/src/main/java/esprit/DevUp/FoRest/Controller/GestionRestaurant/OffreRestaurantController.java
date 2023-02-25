@@ -26,7 +26,6 @@ public class OffreRestaurantController {
 
     @PostMapping("/{idrestaurant}/addOffreRestaurant")
     public OffreRestaurant addOffreRestaurant(@PathVariable("idrestaurant") Integer idrestaurant,@RequestBody OffreRestaurant offreRestaurant) {
-        System.out.println(idrestaurant);
         OffreRestaurant r = iServiceOffreRestaurant.addOffreRestaurant(offreRestaurant,idrestaurant);
         return r;
     }

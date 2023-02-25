@@ -1,7 +1,11 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
+import esprit.DevUp.FoRest.Entity.Menu;
 import esprit.DevUp.FoRest.Entity.ReservationPlace;
+import esprit.DevUp.FoRest.Entity.TableRestaurant;
+import esprit.DevUp.FoRest.Repository.GestionRestaurant.MenuRepository;
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.ReservationPlaceRepository;
+import esprit.DevUp.FoRest.Repository.GestionRestaurant.TableRepository;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -11,6 +15,10 @@ import java.util.List;
 @Slf4j
 
 public class ServiceReservationPlace implements IServiceReservationPlace {
+    @Autowired
+    private TableRepository tableRepository;
+    @Autowired
+    private MenuRepository menuRepository;
 
     @Autowired
 ReservationPlaceRepository reservationPlaceRepository;
@@ -20,7 +28,12 @@ ReservationPlaceRepository reservationPlaceRepository;
     }
 
     @Override
-    public ReservationPlace addReservationPlace(ReservationPlace u) {
+    public ReservationPlace addReservationPlace(Integer idmenu, Integer idrestaurant, Integer iduser, Integer idtable, ReservationPlace u) {
+        Menu menu=menuRepository.findById(idmenu).get();
+        u.setMenu(menu);
+        TableRestaurant tableRestaurant=tableRepository.findById(idmenu).get();
+        u.setTableRestaurant(tableRestaurant);
+
         return reservationPlaceRepository.save(u);
     }
 

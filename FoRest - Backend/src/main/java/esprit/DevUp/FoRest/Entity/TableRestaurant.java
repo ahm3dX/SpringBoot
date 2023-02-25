@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -24,9 +25,10 @@ public class TableRestaurant implements Serializable {
     private int now;
     private int max ;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="tableRestaurant")
+    @ManyToOne
+    private Restaurant tableInRestaurant;
+
+    @OneToMany(mappedBy = "tableRestaurant")
     @JsonIgnore
-    private Set<ReservationPlace> reservationPlaces;
-
-
+    private List<ReservationPlace> reservationPlaces;
 }

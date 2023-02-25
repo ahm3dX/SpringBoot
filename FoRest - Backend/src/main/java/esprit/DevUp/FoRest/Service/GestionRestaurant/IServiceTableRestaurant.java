@@ -8,7 +8,7 @@ import java.util.List;
 public interface IServiceTableRestaurant {
     List<TableRestaurant> retrieveAllTableRestaurant();
 
-    TableRestaurant addTableRestaurant (TableRestaurant u);
+    TableRestaurant addTableRestaurant (Integer id,TableRestaurant u);
 
     TableRestaurant updateTableRestaurant (TableRestaurant u);
 

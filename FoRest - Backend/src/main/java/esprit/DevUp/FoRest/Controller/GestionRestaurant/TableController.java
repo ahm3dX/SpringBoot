@@ -7,6 +7,7 @@ import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.nio.file.Path;
 import java.util.List;
 
 @RestController
@@ -23,9 +24,10 @@ public class TableController {
         return list;
     }
 
-    @PostMapping("/addTableRestaurant")
-    public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace) {
-        TableRestaurant r = iServiceTableRestaurant.addTableRestaurant(reservationPlace);
+    @PostMapping("/addTableRestaurant/{idrestaurant}")
+    public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace,
+    @PathVariable("idrestaurant")Integer idrestaurant) {
+        TableRestaurant r = iServiceTableRestaurant.addTableRestaurant(idrestaurant,reservationPlace);
         return r;
     }
 

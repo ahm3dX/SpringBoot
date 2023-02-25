@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 import javax.persistence.*;
 
@@ -30,5 +31,6 @@ public class User implements Serializable{
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
     @OneToMany(mappedBy = "user")
+    @JsonIgnore
     private List<accessRestaurant> accessRestaurants;
 }

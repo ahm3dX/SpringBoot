@@ -22,9 +22,13 @@ public class ReservationPlaceController {
         return list;
     }
 
-    @PostMapping("/addReservationPlace")
-    public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace) {
-        ReservationPlace r = iServiceReservationPlace.addReservationPlace(reservationPlace);
+    @PostMapping("{iduser}/{idrestaurant}/{idmenu}/{idtable}/addReservationPlace/")
+    public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace,
+                                                @PathVariable("iduser") Integer iduser,
+                                                @PathVariable("idtable") Integer idtable,
+                                                @PathVariable("idrestaurant") Integer idrestaurant,
+                                                @PathVariable("idmenu") Integer idmenu) {
+        ReservationPlace r = iServiceReservationPlace.addReservationPlace(idmenu,idrestaurant,iduser,idtable,reservationPlace);
         return r;
     }
     @DeleteMapping("/removeReservationPlace/{idReservationPlace}")

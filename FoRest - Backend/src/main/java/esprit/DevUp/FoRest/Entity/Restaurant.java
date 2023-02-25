@@ -29,9 +29,10 @@ public class Restaurant implements Serializable {
     @JsonIgnore
     private Set<OffreRestaurant> offreRestaurants;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="_Restaurant")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="tableInRestaurant")
     @JsonIgnore
-    private Set<ReservationPlace> reservationPlaces;
+    private Set<TableRestaurant> tableRestaurants;
+
 
 
 

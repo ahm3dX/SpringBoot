@@ -19,10 +19,8 @@ public class ReservationPlace implements Serializable {
     @Column(name = "id_reservation_place", nullable = false)
     private Integer idReservationPlace;
 
-
     @ManyToOne
-    TableRestaurant tableRestaurant;
+    private TableRestaurant tableRestaurant;
     @ManyToOne
-    Menu menu;
-
+    private Menu menu;
 }

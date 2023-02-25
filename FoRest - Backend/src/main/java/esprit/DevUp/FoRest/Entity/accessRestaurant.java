@@ -1,5 +1,6 @@
 package esprit.DevUp.FoRest.Entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -25,6 +26,7 @@ public class accessRestaurant implements Serializable {
     @ManyToOne
     private User user;
     @ManyToOne
+    @JsonIgnore
     private OffreRestaurant offreRestaurant;
 
 }

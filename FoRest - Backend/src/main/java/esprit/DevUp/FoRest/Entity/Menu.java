@@ -6,6 +6,7 @@ import lombok.*;
 import javax.persistence.*;
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 import java.util.Set;
 
 @Getter
@@ -22,7 +23,10 @@ public class Menu implements Serializable {
     private String plateName;
     private String Description;
     private Date timeMeal;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="menu")
+
+    @OneToMany(mappedBy = "menu")
     @JsonIgnore
-    private Set<ReservationPlace> reservationPlaces;
+    private List<ReservationPlace> reservationPlaces;
+
+
 }
