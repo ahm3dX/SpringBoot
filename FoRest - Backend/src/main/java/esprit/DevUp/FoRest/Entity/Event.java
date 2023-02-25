@@ -1,6 +1,5 @@
 package esprit.DevUp.FoRest.Entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -26,9 +25,12 @@ public class Event implements Serializable {
     public state state;
     public String description;
 
-
-    @OneToMany(  cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL)
+    @JoinColumn(name="idCreno")
     private Set<Creno> crenos;
+
+    @ManyToMany
+    Set<User> users;
 
 
 

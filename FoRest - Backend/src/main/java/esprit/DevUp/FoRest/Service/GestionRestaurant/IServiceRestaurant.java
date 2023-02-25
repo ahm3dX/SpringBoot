@@ -1,7 +1,6 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.Restaurant;
-import esprit.DevUp.FoRest.Entity.User;
+import esprit.DevUp.FoRest.Entity.others.Restaurant;
 
 import java.util.List;
 

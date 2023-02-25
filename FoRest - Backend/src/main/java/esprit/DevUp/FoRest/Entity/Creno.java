@@ -20,7 +20,6 @@ import java.util.List;
 public class Creno implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "idCreno")
     int idCreno;
     @Temporal(TemporalType.DATE)
     Date dateDebut;
@@ -32,8 +31,6 @@ public class Creno implements Serializable {
     @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JsonIgnore
     private Event event;
-
-
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "creno")
     public List<Plannification> plannifications;

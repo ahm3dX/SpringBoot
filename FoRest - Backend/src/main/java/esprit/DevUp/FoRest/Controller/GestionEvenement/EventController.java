@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
+import java.util.Set;
 
 @AllArgsConstructor
 @RestController
@@ -35,10 +36,10 @@ public class EventController {
 
     }
 
-    @PostMapping("addevent")
-    public ResponseEntity<Event> addEvent(@RequestBody Event e) {
+    @PostMapping("addevent/{id}")
+    public ResponseEntity<Event> addEvent(@PathVariable int id, @RequestBody Event e) {
         System.out.println(e);
-        iEventService.addEvent(e);
+        iEventService.addEvent(e,id);
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
@@ -50,7 +51,7 @@ public class EventController {
     }
 
 
-    @PutMapping("validate/{idEvent}")
+    @PutMapping("deny/{idEvent}")
     public void deny(@PathVariable int idEvent) {
         System.out.println("ID" + idEvent);
         iEventService.validateAdmin(idEvent);
