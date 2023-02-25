@@ -10,6 +10,8 @@ import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Calendar;
+import java.util.Date;
 import java.util.List;
 @Service
 @Slf4j
@@ -28,12 +30,17 @@ ReservationPlaceRepository reservationPlaceRepository;
     }
 
     @Override
-    public ReservationPlace addReservationPlace(Integer idmenu, Integer idrestaurant, Integer iduser, Integer idtable, ReservationPlace u) {
+    public ReservationPlace addReservationPlace(Integer idmenu, Integer iduser, Integer idtable, ReservationPlace u) {
         Menu menu=menuRepository.findById(idmenu).get();
         u.setMenu(menu);
         TableRestaurant tableRestaurant=tableRepository.findById(idmenu).get();
         u.setTableRestaurant(tableRestaurant);
+        u.setIduser(iduser);
 
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(u.getDateStart());
+        calendar.add(Calendar.MINUTE, 30);
+        u.setDateEnd(calendar.getTime());
         return reservationPlaceRepository.save(u);
     }
 

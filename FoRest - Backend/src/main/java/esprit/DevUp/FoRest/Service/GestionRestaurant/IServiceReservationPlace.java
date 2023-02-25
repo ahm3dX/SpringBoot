@@ -7,7 +7,7 @@ import java.util.List;
 public interface IServiceReservationPlace {
     List<ReservationPlace> retrieveAllReservationPlace();
 
-    ReservationPlace addReservationPlace (Integer idmenu, Integer idrestaurant, Integer iduser, Integer idtable, ReservationPlace u);
+    ReservationPlace addReservationPlace (Integer idmenu,Integer iduser, Integer idtable, ReservationPlace u);
 
     ReservationPlace updateReservationPlace (ReservationPlace u);
 

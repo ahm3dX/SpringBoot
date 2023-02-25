@@ -17,7 +17,8 @@ public class ServiceMenu implements IServiceMenu {
     }
 
     @Override
-    public Menu addMenu(Menu u) {
+    public Menu addMenu(Integer id,Menu u) {
+        u.setRestaurant_id(id);
         return menuRepository.save(u);
     }
 

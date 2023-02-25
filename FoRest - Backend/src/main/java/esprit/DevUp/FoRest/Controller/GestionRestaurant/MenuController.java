@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/Restaurant/Menu")
+@RequestMapping("/Menu")
 public class MenuController {
     @Autowired
     IServiceMenu iserviceMenu;
@@ -22,9 +22,9 @@ public class MenuController {
         return list;
     }
 
-    @PostMapping("/addMenu")
-    public Menu addMenu(@RequestBody Menu menu) {
-        Menu r = iserviceMenu.addMenu(menu);
+    @PostMapping("/addMenu/{idrestaurant}")
+    public Menu addMenu(@RequestBody Menu menu,@PathVariable("idrestaurant")Integer idrestaurant) {
+        Menu r = iserviceMenu.addMenu(idrestaurant,menu);
         return r;
     }
 
@@ -38,5 +38,4 @@ public class MenuController {
         Menu menu= iserviceMenu.updateMenu(idmenu);
         return idmenu;
     }
-
 }

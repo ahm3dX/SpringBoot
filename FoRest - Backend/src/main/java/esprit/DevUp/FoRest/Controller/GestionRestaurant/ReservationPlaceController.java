@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/ReservatonPlace")
+@RequestMapping("/ReservationPlace")
 public class ReservationPlaceController {
     @Autowired
     IServiceReservationPlace iServiceReservationPlace;
@@ -22,13 +22,12 @@ public class ReservationPlaceController {
         return list;
     }
 
-    @PostMapping("{iduser}/{idrestaurant}/{idmenu}/{idtable}/addReservationPlace/")
+    @PostMapping("/addReservationPlace/{iduser}/{idmenu}/{idtable}")
     public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace,
                                                 @PathVariable("iduser") Integer iduser,
                                                 @PathVariable("idtable") Integer idtable,
-                                                @PathVariable("idrestaurant") Integer idrestaurant,
                                                 @PathVariable("idmenu") Integer idmenu) {
-        ReservationPlace r = iServiceReservationPlace.addReservationPlace(idmenu,idrestaurant,iduser,idtable,reservationPlace);
+        ReservationPlace r = iServiceReservationPlace.addReservationPlace(idmenu,iduser,idtable,reservationPlace);
         return r;
     }
     @DeleteMapping("/removeReservationPlace/{idReservationPlace}")
@@ -38,7 +37,7 @@ public class ReservationPlaceController {
 
     @PutMapping("/updateReservationPlace/{idReservationPlace}")
     public ReservationPlace updateOffreRestaurant(@RequestBody ReservationPlace place) {
-        ReservationPlace reservationPlace= updateOffreRestaurant(place);
+        ReservationPlace reservationPlace= iServiceReservationPlace.updateReservationPlace(place);
         return reservationPlace;
     }
 }

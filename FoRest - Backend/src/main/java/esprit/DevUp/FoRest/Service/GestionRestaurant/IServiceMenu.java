@@ -8,7 +8,7 @@ import java.util.List;
 public interface IServiceMenu {
     List<Menu> retrieveAllMenu();
 
-    Menu addMenu (Menu u);
+    Menu addMenu (Integer id,Menu u);
 
     Menu updateMenu (Menu u);
 

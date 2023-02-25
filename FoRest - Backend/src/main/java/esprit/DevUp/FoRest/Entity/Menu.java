@@ -23,10 +23,12 @@ public class Menu implements Serializable {
     private String plateName;
     private String Description;
     private Date timeMeal;
+    private Integer Restaurant_id;
+    @Enumerated
+    private typeFood typeFood;
 
     @OneToMany(mappedBy = "menu")
     @JsonIgnore
     private List<ReservationPlace> reservationPlaces;
-
 
 }
