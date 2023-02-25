@@ -50,10 +50,11 @@ public class EventController {
     }
 
 
-    @PutMapping("deny/{idEvent}")
+    @PutMapping("validate/{idEvent}")
     public void deny(@PathVariable int idEvent) {
         System.out.println("ID" + idEvent);
-        iEventService.denyAdmin(idEvent);
+        iEventService.validateAdmin(idEvent);
     }
+
 
 }

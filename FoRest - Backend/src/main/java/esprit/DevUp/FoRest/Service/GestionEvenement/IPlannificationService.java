@@ -8,7 +8,7 @@ import java.util.Optional;
 public interface IPlannificationService {
 
     //    List<Plannification> retrieveAllPlannification();
-    Plannification addPlan(Plannification p);
+    Plannification addPlan(Plannification p );
 
     List<Plannification> getAllPlannifications();
 
