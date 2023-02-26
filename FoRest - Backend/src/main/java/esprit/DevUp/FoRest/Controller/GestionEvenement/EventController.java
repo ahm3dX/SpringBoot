@@ -1,9 +1,12 @@
 package esprit.DevUp.FoRest.Controller.GestionEvenement;
 
 
+import esprit.DevUp.FoRest.Entity.EmailDetails;
 import esprit.DevUp.FoRest.Entity.Event;
+import esprit.DevUp.FoRest.Service.GestionEvenement.IEmailService;
 import esprit.DevUp.FoRest.Service.GestionEvenement.IEventService;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -17,6 +20,9 @@ import java.util.Set;
 @RequestMapping("event")
 public class EventController {
     private IEventService iEventService;
+    @Autowired
+    private IEmailService emailService;
+
 
     @GetMapping("get-events")
     public ResponseEntity getAllEvents() {
@@ -55,6 +61,17 @@ public class EventController {
     public void deny(@PathVariable int idEvent) {
         System.out.println("ID" + idEvent);
         iEventService.validateAdmin(idEvent);
+    }
+
+
+    @PostMapping("/sendMail")
+    public String
+    sendMail(@RequestBody EmailDetails details)
+    {
+        String status
+                = emailService.sendSimpleMail(details);
+
+        return status;
     }
 
 
