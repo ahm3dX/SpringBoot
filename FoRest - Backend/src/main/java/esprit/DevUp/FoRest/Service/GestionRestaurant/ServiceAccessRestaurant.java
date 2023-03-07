@@ -11,7 +11,6 @@ import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.time.LocalTime;
 import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
@@ -29,10 +28,6 @@ public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
     @Autowired
     OffreRestaurantRepository offreRestaurantRepository;
 
-    @Override
-    public List<accessRestaurant> retrieveAllaccessRestaurant() {
-        return accessRestaurantRepository.findAll();
-    }
 
     @Override
     @Transactional
@@ -66,13 +61,24 @@ public class ServiceAccessRestaurant implements IServiceAccessRestaurant {
         return accessRestaurantRepository.save(u);
     }
 
+
     @Override
-    public accessRestaurant retrieveaccessRestaurant(Integer idaccessRestaurant) {
+    public void removeaccessRestaurant(Integer idaccessRestaurant) {
+        accessRestaurantRepository.deleteById(idaccessRestaurant);
+    }
+    @Override
+    public List<accessRestaurant> retrieveAllaccess() {
+        return accessRestaurantRepository.findAll();
+    }
+
+    @Override
+    public accessRestaurant OneAccessRestaurant(Integer idaccessRestaurant) {
         return accessRestaurantRepository.findById(idaccessRestaurant).orElse(null);
     }
 
     @Override
-    public void removeaccessRestaurant(Integer idaccessRestaurant) {
-    accessRestaurantRepository.deleteById(idaccessRestaurant);
+    public List<accessRestaurant> retrieveAllAccessbyRestaurant(Integer idRestaurant) {
+        return accessRestaurantRepository.findByRestaurantId(idRestaurant);
     }
+
 }

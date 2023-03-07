@@ -22,6 +22,11 @@ public class ReservationPlaceController {
         return list;
     }
 
+    @GetMapping("/retrieveAllReservationPlace/{table}")
+    public List<ReservationPlace> getReservationPlacebyresto(@PathVariable("table") Integer idresto) {
+        List<ReservationPlace> list = iServiceReservationPlace.showbytable(idresto);
+        return list;
+    }
     @PostMapping("/addReservationPlace/{iduser}/{idmenu}/{idtable}")
     public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace,
                                                 @PathVariable("iduser") Integer iduser,

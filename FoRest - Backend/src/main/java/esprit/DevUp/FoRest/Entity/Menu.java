@@ -23,7 +23,10 @@ public class Menu implements Serializable {
     private String plateName;
     private String Description;
     private Date timeMeal;
-    private Integer Restaurant_id;
+    private Integer Restaurantid;
+
+    @Lob
+    private byte[] image;
     @Enumerated
     private typeFood typeFood;
 

@@ -1,5 +1,6 @@
 package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
+import esprit.DevUp.FoRest.Entity.Restaurant;
 import esprit.DevUp.FoRest.Entity.TableRestaurant;
 import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceTableRestaurant;
 import lombok.AllArgsConstructor;
@@ -22,6 +23,15 @@ public class TableController {
     public List<TableRestaurant> getTableRestaurant() {
         List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurant();
         return list;
+    }
+    @GetMapping("/showAll/{idrestaurant}")
+    public List<TableRestaurant> getTableRestaurantbyrestaurant(@PathVariable("idrestaurant")Integer id) {
+        List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurantByRestaurant(id);
+        return list;
+    }
+    @GetMapping("/details/{tableid}")
+    public TableRestaurant OneTable(@PathVariable("tableid")Integer id) {
+        return  iServiceTableRestaurant.retrieveTableRestaurant(id);
     }
 
     @PostMapping("/addTableRestaurant/{idrestaurant}")

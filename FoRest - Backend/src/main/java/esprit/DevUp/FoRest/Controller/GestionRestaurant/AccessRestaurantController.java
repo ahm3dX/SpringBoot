@@ -17,9 +17,19 @@ import java.util.List;
 public class AccessRestaurantController {
     @Autowired
     IServiceAccessRestaurant serviceAccessRestaurant;
-    @GetMapping("/retrieveAllaccessRestaurant")
+    @GetMapping("/All")
     public List<accessRestaurant> getaccessRestaurant() {
-        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllaccessRestaurant();
+        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllaccess();
+        return list;
+    }
+        @GetMapping("/details/{idoffre}")
+    public accessRestaurant OneAccesRestaurant(@PathVariable("idoffre") Integer idoffre) {
+        return serviceAccessRestaurant.OneAccessRestaurant(idoffre);
+    }
+
+    @GetMapping("{idrestaurant}/retrieveAllAccessRestaurant")
+    public List<accessRestaurant> getaccessRestaurantbyrestaurant(@PathVariable("idrestaurant") Integer idRestaurant) {
+        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllAccessbyRestaurant(idRestaurant);
         return list;
     }
     @PostMapping("/addaccessRestaurant/{iduser}/{idoffre}")

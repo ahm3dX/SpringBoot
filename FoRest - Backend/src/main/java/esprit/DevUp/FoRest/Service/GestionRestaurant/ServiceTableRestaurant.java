@@ -17,31 +17,28 @@ public class ServiceTableRestaurant implements IServiceTableRestaurant {
     @Autowired
     TableRepository tableRepository;
 
-    public ServiceTableRestaurant(RestaurantRepository restaurantRepository) {
-        this.restaurantRepository = restaurantRepository;
+    @Override
+    public TableRestaurant retrieveTableRestaurant(Integer id) {
+        return tableRepository.findById(id).orElse(null);
     }
     @Override
     public List<TableRestaurant> retrieveAllTableRestaurant() {
         return tableRepository.findAll();
     }
-
+    @Override
+    public List<TableRestaurant> retrieveAllTableRestaurantByRestaurant(Integer idrestaurant) {
+        return tableRepository.findAll();
+    }
     @Override
     public TableRestaurant addTableRestaurant(Integer id,TableRestaurant u) {
         Restaurant restaurant=restaurantRepository.findById(id).get();
-        u.setTableInRestaurant(restaurant);
+        u.setResto(restaurant);
         return tableRepository.save(u);
     }
-
     @Override
     public TableRestaurant updateTableRestaurant(TableRestaurant u) {
         return tableRepository.save(u);
     }
-
-    @Override
-    public TableRestaurant retrieveTableRestaurant(Integer id) {
-        return tableRepository.findById(id).orElse(null);
-    }
-
     @Override
     public void removeTableRestaurant(Integer id) {
     tableRepository.deleteById(id);

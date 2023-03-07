@@ -15,7 +15,6 @@ import java.util.Date;
 import java.util.List;
 @Service
 @Slf4j
-
 public class ServiceReservationPlace implements IServiceReservationPlace {
     @Autowired
     private TableRepository tableRepository;
@@ -23,20 +22,30 @@ public class ServiceReservationPlace implements IServiceReservationPlace {
     private MenuRepository menuRepository;
 
     @Autowired
-ReservationPlaceRepository reservationPlaceRepository;
+    ReservationPlaceRepository reservationPlaceRepository;
     @Override
     public List<ReservationPlace> retrieveAllReservationPlace() {
         return reservationPlaceRepository.findAll();
     }
 
     @Override
+    public ReservationPlace retrieveReservationPlace(Integer idReservationPlace) {
+        return reservationPlaceRepository.findById(idReservationPlace).orElse(null);
+    }
+    @Override
+    public List<ReservationPlace> showbytable(Integer integer) {
+         return reservationPlaceRepository.findReservationsByTableId(integer);
+      // return null;
+    }
+
+
+    @Override
     public ReservationPlace addReservationPlace(Integer idmenu, Integer iduser, Integer idtable, ReservationPlace u) {
         Menu menu=menuRepository.findById(idmenu).get();
         u.setMenu(menu);
         TableRestaurant tableRestaurant=tableRepository.findById(idmenu).get();
-        u.setTableRestaurant(tableRestaurant);
+        u.setTable(tableRestaurant);
         u.setIduser(iduser);
-
         Calendar calendar = Calendar.getInstance();
         calendar.setTime(u.getDateStart());
         calendar.add(Calendar.MINUTE, 30);
@@ -49,13 +58,10 @@ ReservationPlaceRepository reservationPlaceRepository;
         return reservationPlaceRepository.save(u);
     }
 
-    @Override
-    public ReservationPlace retrieveReservationPlace(Integer idReservationPlace) {
-        return reservationPlaceRepository.findById(idReservationPlace).orElse(null);
-    }
+
 
     @Override
     public void removeReservationPlace(Integer idReservationPlace) {
-reservationPlaceRepository.deleteById(idReservationPlace);
+        reservationPlaceRepository.deleteById(idReservationPlace);
     }
 }

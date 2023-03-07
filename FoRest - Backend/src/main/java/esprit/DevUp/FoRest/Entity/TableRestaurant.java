@@ -26,9 +26,9 @@ public class TableRestaurant implements Serializable {
     private int max ;
 
     @ManyToOne
-    private Restaurant tableInRestaurant;
+    private Restaurant resto;
 
-    @OneToMany(mappedBy = "tableRestaurant")
+    @OneToMany(mappedBy = "table")
     @JsonIgnore
     private List<ReservationPlace> reservationPlaces;
 }

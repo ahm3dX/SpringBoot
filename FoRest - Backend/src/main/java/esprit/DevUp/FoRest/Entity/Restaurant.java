@@ -22,14 +22,12 @@ public class Restaurant implements Serializable {
     private String nameRestaurant ;
     private  String addressRestaurant;
     private int nbrmaximal;
-    @ManyToOne
-    Restaurant restaurant;
 
     @OneToMany(cascade = CascadeType.ALL, mappedBy="restaurant")
     @JsonIgnore
     private Set<OffreRestaurant> offreRestaurants;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="tableInRestaurant")
+    @OneToMany(cascade = CascadeType.ALL, mappedBy="resto")
     @JsonIgnore
     private Set<TableRestaurant> tableRestaurants;
 

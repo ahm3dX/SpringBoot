@@ -5,13 +5,15 @@ import esprit.DevUp.FoRest.Entity.OffreRestaurant;
 import java.util.List;
 
 public interface IServiceOffreRestaurant {
-    List<OffreRestaurant> retrieveAllROffreestaurants(Integer id);
+    List<OffreRestaurant> retrieveAllOffer();
 
+    List<OffreRestaurant> retrieveAllOffreByRestaurant(Integer id);
+    OffreRestaurant retrieveOneOffre(Integer Offreidrestaurant);
     OffreRestaurant addOffreRestaurant (OffreRestaurant u,Integer id);
 
     OffreRestaurant updateOffreRestaurant (OffreRestaurant u);
 
-    OffreRestaurant retrieveOffreRestaurant(Integer Offreidrestaurant);
+
 
     void removeOffreRestaurant(Integer idOffrerestaurant);
 }

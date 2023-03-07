@@ -23,7 +23,7 @@ public class ReservationPlace implements Serializable {
     private Date dateEnd;
     private Integer iduser;
     @ManyToOne
-    private TableRestaurant tableRestaurant;
+    private TableRestaurant table;
     @ManyToOne
     private Menu menu;
 }
