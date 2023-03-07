@@ -31,6 +31,4 @@ public class User implements Serializable{
     private TypeUser typeUser;
 
 
-    @ManyToOne
-    accessRestaurant accessRestaurant;
 }
