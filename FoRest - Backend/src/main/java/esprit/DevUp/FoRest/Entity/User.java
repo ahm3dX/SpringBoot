@@ -29,6 +29,8 @@ public class User implements Serializable{
     private Date DateNaissance;
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
-
+    @OneToMany(mappedBy = "user")
+    @JsonIgnore
+    private List<accessRestaurant> accessRestaurants;
 
 }

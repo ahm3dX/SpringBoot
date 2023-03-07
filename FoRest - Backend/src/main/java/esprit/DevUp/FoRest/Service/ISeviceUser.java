@@ -1,7 +1,6 @@
 package esprit.DevUp.FoRest.Service;
 
 import esprit.DevUp.FoRest.Entity.User;
-import org.springframework.stereotype.Service;
 
 import java.util.List;
 

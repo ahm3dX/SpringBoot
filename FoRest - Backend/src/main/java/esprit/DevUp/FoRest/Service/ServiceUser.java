@@ -2,7 +2,6 @@ package esprit.DevUp.FoRest.Service;
 
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Repository.UserRepository;
-import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;
