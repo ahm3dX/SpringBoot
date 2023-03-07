@@ -5,6 +5,7 @@ import esprit.DevUp.FoRest.Service.ISeviceUser;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -18,6 +19,9 @@ public class UserController {
     @Autowired
     ISeviceUser iSevice;
 
+    @Autowired
+    private PasswordEncoder bcryptEncoder;
+
     // http://localhost:8089/Forest/User/retrieveAllUsers
     @GetMapping("/retrieveAllUsers")
     public List<User> getUsers() {
@@ -28,6 +32,7 @@ public class UserController {
     // http://localhost:8089/Forest/User/addUser
     @PostMapping("/addUser")
     public User adduser(@RequestBody User user) {
+        user.setPassword(bcryptEncoder.encode(user.getPassword()));
         User users = iSevice.addUser(user);
         return users;
     }

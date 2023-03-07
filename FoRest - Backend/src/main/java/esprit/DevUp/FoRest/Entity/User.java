@@ -15,10 +15,11 @@ import javax.persistence.*;
 public class User implements Serializable{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id_user", nullable = false)
-    private Integer id_user;
+    @Column(name = "userid", nullable = false)
+    private Integer userid;
     private String firstname;
     private String Lastname;
+    private String userName;
     private String Email;
     private String Password;
     private int phone_number;

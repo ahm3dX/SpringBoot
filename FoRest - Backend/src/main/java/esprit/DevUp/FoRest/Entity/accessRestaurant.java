@@ -1,6 +1,7 @@
 package esprit.DevUp.FoRest.Entity;
 
 import lombok.*;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.persistence.*;
 
@@ -14,6 +15,7 @@ import java.util.Set;
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
+@Slf4j
 public class accessRestaurant implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
