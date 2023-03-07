@@ -24,7 +24,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8089/Forest/accessRestaurant/addaccessRestaurant/1/2",
+							"raw": "http://localhost:8089/Forest/accessRestaurant/addaccessRestaurant/1/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -35,7 +35,7 @@
 								"accessRestaurant",
 								"addaccessRestaurant",
 								"1",
-								"2"
+								"1"
 							]
 						}
 					},
@@ -94,56 +94,12 @@
 					"response": []
 				},
 				{
-					"name": "show One",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/accessRestaurant/details/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"accessRestaurant",
-								"details",
-								"1"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show by restaurant",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/accessRestaurant/5/retrieveAllAccessRestaurant",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"accessRestaurant",
-								"5",
-								"retrieveAllAccessRestaurant"
-							]
-						}
-					},
-					"response": []
-				},
-				{
 					"name": "show all",
 					"request": {
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8089/Forest/accessRestaurant/all",
+							"raw": "http://localhost:8089/Forest/Restaurant/retrieveAllRestaurant",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -151,8 +107,8 @@
 							"port": "8089",
 							"path": [
 								"Forest",
-								"accessRestaurant",
-								"all"
+								"Restaurant",
+								"retrieveAllRestaurant"
 							]
 						}
 					},
@@ -170,7 +126,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"nameRestaurant\":\"Esprit\",\r\n    \"nbrmaximal\":500\r\n}",
+							"raw": "{\r\n    \"nameRestaurant\":\"bla\",\r\n    \"nbrmaximal\":500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -230,7 +186,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"addressRestaurant\": \"Ariana Ghazela \",\r\n    \"nameRestaurant\":\"tekup\",\r\n    \"nbrmaximal\":500\r\n}",
+							"raw": "{\r\n    \"nameRestaurant\":\"bla\",\r\n    \"nbrmaximal\":500\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -238,7 +194,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8089/Forest/Restaurant/add_restauarant_dto",
+							"raw": "http://localhost:8089/Forest/Restaurant/addRestaurant",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -247,7 +203,7 @@
 							"path": [
 								"Forest",
 								"Restaurant",
-								"add_restauarant_dto"
+								"addRestaurant"
 							]
 						}
 					},
@@ -325,27 +281,6 @@
 						}
 					},
 					"response": []
-				},
-				{
-					"name": "show all DTO",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/Restaurant/retrieveAllRestaurant",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"Restaurant",
-								"retrieveAllRestaurant"
-							]
-						}
-					},
-					"response": []
 				}
 			]
 		},
@@ -359,7 +294,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n   \"nameOffre\":\"1Day\",\r\n   \"nbrDays\":30\r\n   ,\r\n   \"prix\":95,\r\n   \"breakfast\":true,\r\n    \"lunch\": true,\r\n    \"dinner\": true\r\n}",
+							"raw": "{\r\n   \"nameOffre\":\"1Day\",\r\n   \"nbrDays\":1,\r\n   \"prix\":15,\r\n   \"breakfast\":true,\r\n    \"lunch\": true,\r\n    \"dinner\": true\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -367,7 +302,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8089/Forest/offreRestaurant/5/addOffreRestaurant",
+							"raw": "http://localhost:8089/Forest/offreRestaurant/1/addOffreRestaurant",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -376,7 +311,7 @@
 							"path": [
 								"Forest",
 								"offreRestaurant",
-								"5",
+								"1",
 								"addOffreRestaurant"
 							]
 						}
@@ -454,7 +389,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8089/Forest/offreRestaurant/1/offre",
+							"raw": "http://localhost:8089/Forest/offreRestaurant/offre/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -463,8 +398,8 @@
 							"path": [
 								"Forest",
 								"offreRestaurant",
-								"1",
-								"offre"
+								"offre",
+								"1"
 							]
 						}
 					},
@@ -503,7 +438,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"idTableRestaurant\": 1,\r\n    \"number\": 1,\r\n    \"block\": 1,\r\n    \"max\": 6\r\n}",
+							"raw": "{\r\n    \"idTableRestaurant\": 1,\r\n    \"number\": 0,\r\n    \"block\": null,\r\n    \"now\": 0,\r\n    \"max\": 6\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -585,27 +520,6 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8089/Forest/Table/retrieveAlltableRestaurant",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"Table",
-								"retrieveAlltableRestaurant"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show by restaurant id",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
 							"raw": "http://localhost:8089/Forest/Restaurant/retrieveAllRestaurant",
 							"protocol": "http",
 							"host": [
@@ -616,28 +530,6 @@
 								"Forest",
 								"Restaurant",
 								"retrieveAllRestaurant"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "details",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/Table/details/1",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"Table",
-								"details",
-								"1"
 							]
 						}
 					},
@@ -753,37 +645,16 @@
 						"method": "POST",
 						"header": [],
 						"body": {
-							"mode": "formdata",
-							"formdata": [
-								{
-									"key": "image",
-									"type": "file",
-									"src": "/C:/Users/Rayen/Desktop/IMG_20190121_121341.jpg"
-								},
-								{
-									"key": "time_meal",
-									"value": "2023-05-01 18:30",
-									"type": "text"
-								},
-								{
-									"key": "description",
-									"value": "healthy",
-									"type": "text"
-								},
-								{
-									"key": "plate_name",
-									"value": "salade",
-									"type": "text"
-								},
-								{
-									"key": "typeFood",
-									"value": "LUNCH",
-									"type": "text"
+							"mode": "raw",
+							"raw": "{\r\n    \"idTableRestaurant\": 1,\r\n    \"number\": 0,\r\n    \"block\": null,\r\n    \"now\": 0,\r\n    \"max\": 6\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
 								}
-							]
+							}
 						},
 						"url": {
-							"raw": "http://localhost:8089/Forest/Menu/addMenu/1",
+							"raw": "http://localhost:8089/Forest/Table/addTableRestaurant/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -791,8 +662,8 @@
 							"port": "8089",
 							"path": [
 								"Forest",
-								"Menu",
-								"addMenu",
+								"Table",
+								"addTableRestaurant",
 								"1"
 							]
 						}
@@ -853,27 +724,6 @@
 				},
 				{
 					"name": "show all",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/Restaurant/retrieveAllRestaurant",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"Restaurant",
-								"retrieveAllRestaurant"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show details",
 					"request": {
 						"method": "GET",
 						"header": [],
@@ -926,7 +776,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"dateStart\": \"2023-03-07\"\r\n}",
+							"raw": "{\r\n    \"idTableRestaurant\": 1,\r\n    \"number\": 0,\r\n    \"block\": null,\r\n    \"now\": 0,\r\n    \"max\": 6\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -934,7 +784,7 @@
 							}
 						},
 						"url": {
-							"raw": "http://localhost:8089/Forest/ReservationPlace/addReservationPlace/1/1/1",
+							"raw": "http://localhost:8089/Forest/Table/addTableRestaurant/1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -942,10 +792,8 @@
 							"port": "8089",
 							"path": [
 								"Forest",
-								"ReservationPlace",
-								"addReservationPlace",
-								"1",
-								"1",
+								"Table",
+								"addTableRestaurant",
 								"1"
 							]
 						}
@@ -1010,7 +858,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8089/Forest/ReservationPlace/addReservationPlace/iduser/idmenu/idtable",
+							"raw": "http://localhost:8089/Forest/Restaurant/retrieveAllRestaurant",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -1018,35 +866,8 @@
 							"port": "8089",
 							"path": [
 								"Forest",
-								"ReservationPlace",
-								"addReservationPlace",
-								"iduser",
-								"idmenu",
-								"idtable"
-							]
-						}
-					},
-					"response": []
-				},
-				{
-					"name": "show all Copy",
-					"request": {
-						"method": "GET",
-						"header": [],
-						"url": {
-							"raw": "http://localhost:8089/Forest/ReservationPlace/addReservationPlace/iduser/idmenu/idtable",
-							"protocol": "http",
-							"host": [
-								"localhost"
-							],
-							"port": "8089",
-							"path": [
-								"Forest",
-								"ReservationPlace",
-								"addReservationPlace",
-								"iduser",
-								"idmenu",
-								"idtable"
+								"Restaurant",
+								"retrieveAllRestaurant"
 							]
 						}
 					},

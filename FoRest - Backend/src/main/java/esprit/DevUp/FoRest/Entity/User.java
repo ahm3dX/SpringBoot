@@ -2,7 +2,10 @@ package esprit.DevUp.FoRest.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
+import java.util.List;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+import esprit.DevUp.FoRest.Entity.Restaurant.accessRestaurant;
 import lombok.*;
 import javax.persistence.*;
 
@@ -25,12 +28,10 @@ public class User implements Serializable{
     private int phone_number;
     private String gender;
     private int CIN;
-
     private Date DateNaissance;
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
     @OneToMany(mappedBy = "user")
     @JsonIgnore
     private List<accessRestaurant> accessRestaurants;
-
 }

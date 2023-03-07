@@ -94,8 +94,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 		http.cors().and().csrf().disable().exceptionHandling().authenticationEntryPoint(unauthorizedHandler).and()
 				.sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and().authorizeRequests()
 				.antMatchers("/authenticate", "/register")
-				.permitAll().antMatchers("/admin/**")
-				.hasRole("Admin").anyRequest().authenticated();
+				.permitAll()/*.antMatchers("/admin/**")
+				.hasRole("Admin")*/.anyRequest().authenticated();
 		http.addFilterBefore(authenticationJwtTokenFilter(), UsernamePasswordAuthenticationFilter.class);
 	}
 	/*@Override
