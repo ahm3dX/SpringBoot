@@ -5,7 +5,8 @@ import esprit.DevUp.FoRest.Entity.User;
 import java.util.List;
 
 
-public interface ISeviceUser {
+public interface
+ISeviceUser {
     List<User> retrieveAllUsers();
 
     User addUser (User u);
@@ -15,4 +16,6 @@ public interface ISeviceUser {
     User retrieveUser(Integer idUser);
 
     void removeUser(Integer idUser);
+
+//   List<User> findUserByEvent(int idEvent);
 }

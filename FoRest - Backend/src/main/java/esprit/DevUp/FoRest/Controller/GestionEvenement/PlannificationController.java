@@ -32,13 +32,15 @@ public class PlannificationController {
         return new ResponseEntity<>(plannification, HttpStatus.CREATED);
 
     }
-    @PostMapping("addplan")
-    public ResponseEntity<Plannification> addPlannification(@RequestBody Plannification p) {
+    @PostMapping("addplan/{idCreno}")
+    public ResponseEntity<Plannification> addPlannification(@RequestBody Plannification p, @PathVariable("idCreno") Integer idCreno) {
         System.out.println(p);
 
-        
-        iPlannificationService.addPlan(p);
-        return new ResponseEntity<>(HttpStatus.CREATED);
 
+        iPlannificationService.addPlan(p,idCreno);
+        return new ResponseEntity<>(HttpStatus.CREATED);
     }
+
+
+
 }

@@ -25,8 +25,7 @@ public class accessRestaurant implements Serializable {
     private Date dateEnd;
     private Boolean payment;
 
-    @OneToMany(cascade = CascadeType.ALL, mappedBy="accessRestaurant")
-    private Set<User> users;
+
     @OneToMany(cascade = CascadeType.ALL, mappedBy="restaurant")
     private Set<Restaurant> restaurants;
 

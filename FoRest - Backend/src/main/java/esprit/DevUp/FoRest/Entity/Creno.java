@@ -28,7 +28,7 @@ public class Creno implements Serializable {
     int Occurence;;
 
     //NEW
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne(fetch = FetchType.EAGER, optional = false)
     @JsonIgnore
     private Event event;
 

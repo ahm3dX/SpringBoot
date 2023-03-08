@@ -1,5 +1,6 @@
 package esprit.DevUp.FoRest.Controller;
 
+import esprit.DevUp.FoRest.Entity.Event;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Service.ISeviceUser;
 import lombok.AllArgsConstructor;
@@ -44,4 +45,10 @@ public class UserController {
         User users= iSevice.updateUser(user);
         return users;
     }
-}
+   /* @GetMapping("/{eventId}/events")
+    public List<User> findUserByIdEvent (@PathVariable int eventId) {
+        Event event = new Event();
+        event.setIdEvent(eventId);
+        return iSevice.findUserByIdEvent (event.getIdEvent());
+    }*/
+    }

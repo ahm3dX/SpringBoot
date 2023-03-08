@@ -40,6 +40,7 @@ public class InviteController {
         
         iinviteService.addInvite(i);
         return new ResponseEntity<>(HttpStatus.CREATED);
-
     }
+
+
 }

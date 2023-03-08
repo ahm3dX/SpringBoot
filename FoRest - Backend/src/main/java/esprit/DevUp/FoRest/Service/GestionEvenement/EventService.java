@@ -1,47 +1,55 @@
 package esprit.DevUp.FoRest.Service.GestionEvenement;
 
-import esprit.DevUp.FoRest.Entity.Creno;
-import esprit.DevUp.FoRest.Entity.Event;
-import esprit.DevUp.FoRest.Entity.User;
-import esprit.DevUp.FoRest.Entity.state;
+import esprit.DevUp.FoRest.Entity.*;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.CrenoRepository;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
 import esprit.DevUp.FoRest.Repository.UserRepository;
 import lombok.AllArgsConstructor;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.mail.SimpleMailMessage;
+import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
-import java.util.HashSet;
-import java.util.List;
-import java.util.Optional;
-import java.util.Set;
+import java.util.*;
 
-;
+
 
 @Service
 @AllArgsConstructor
 public class EventService implements IEventService {
     EventRepository eventRepository;
     CrenoRepository crenoRepository;
+    @Autowired
     UserRepository userRepository;
+    @Autowired
+    IparticipantService participantService;
+    @Autowired
+    private JavaMailSender javaMailSender;
 
     @Scheduled(fixedDelay = 60000)
     public void fixedDelayMethod() {
-        System.out.println("Method with fixed delay");
+        System.out.println("event scheduler working");
     }
 
     @Override
     public Event addEvent(Event e, int idUser) {
         e.setState(state.PENDING);
         User user = userRepository.findById(idUser).get();
-        Set<User> id = new HashSet<>();
-        id.add(user);
-        e.setUsers(id);
+        System.out.println(user);
+        e.setUser(user);
         return eventRepository.save(e);
     }
 
     @Override
+    public Event updateEvent(Event e) {
+        return eventRepository.save(e);
+
+    }
+
+    @Override
     public List<Event> getAllEvents() {
+
         return eventRepository.findAll();
     }
 
@@ -53,10 +61,11 @@ public class EventService implements IEventService {
     @Override
     public void validateAdmin(int idEvent) {
         Event event = eventRepository.findById(idEvent).get();
-        System.out.println("before"+event.getState());
-        event.setState(state.DONE);
-        System.out.println("after"+event.getState());
+        System.out.println("before" + event.getState());
+        event.setState(state.VALIDATED);
+        System.out.println("after" + event.getState());
         eventRepository.save(event);
+
 
     }
 
@@ -68,5 +77,81 @@ public class EventService implements IEventService {
         eventRepository.save(event);
     }
 
+//    @Override
+//    public void participateToEvent(int idUser, int idEvent) {
+//        User idU = userRepository.findById(idUser).get();
+//        Event idE = eventRepository.findById(idEvent).get();
+//
+//        assert idU != null;
+//        idU.getEvent().add(idE);
+//
+//        assert idE != null;
+//        idE.getParticipants().add(idU);
+//
+//        userRepository.save(idU);
+//        eventRepository.save(idE);
+//
+//    }
+    //dateFin
+
+    @Override
+    public List<User> getParticipants(int idUser) {
+        return eventRepository.getAllusersByEvent(idUser);
+    }
+
+    @Override
+    @Scheduled(fixedDelay = 60000)
+    public String retrieveAndUpdatEventStatus() throws InterruptedException {
+        List<Event> events = this.getAllEvents();
+        Date today = java.sql.Date.valueOf(java.time.LocalDate.now());
+
+        for (Event e : events) {
+            if (e.getCrenos().size() == 0) continue;
+            Set<Creno> op = e.getCrenos();
+            Optional<Creno> cr = op.stream().findFirst();
+            Creno c = cr.get();
+            ///Creno c = e.getCrenos().stream().findFirst().get();
+            Date datefinC = c.getDateFin();
+            Date dateDeb = c.getDateDebut();
+
+            System.out.println("datefin" + datefinC.getTime());
+            System.out.println("todauy" + today.getTime());
+
+
+            if (datefinC.getTime() - today.getTime() < 3600 * 24 * 1000) {
+
+                System.out.println("DONE ");
+                e.setState(state.DONE);//b
+            }
+
+            if (dateDeb.getTime() - today.getTime()  > 3600 * 24 * 1000) {
+                Optional<Event> ev = eventRepository.findById(e.getIdEvent());
+                String nameEv = e.getName();
+
+
+                List<participant> participants = participantService.getParticipantsByEvent(e.getIdEvent());
+               // System.out.println(participants);
+
+                for (participant p : participants) {
+                    User user = p.getUsersP();
+                    String mailUser = user.getEmail();
+                    SimpleMailMessage mailMessage = new SimpleMailMessage();
+                    //mailMessage.setFrom(email);
+                    // mailMessage.setTo(u);
+                    // mailMessage.setSubject(e.get().getObjectif());
+
+                    mailMessage.setTo(mailUser);
+                    mailMessage.setText("qsdqsdqsdqsd");
+                    mailMessage.setSubject("you have an event tomorrow : " + nameEv);
+
+                    javaMailSender.send(mailMessage);
+
+
+                    eventRepository.save(e);
+                }
+            }
+        }
+            return null;
+    }
 
 }
