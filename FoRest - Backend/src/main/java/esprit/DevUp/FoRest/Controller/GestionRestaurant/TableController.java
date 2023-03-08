@@ -17,16 +17,17 @@ public class TableController {
     @Autowired
     IServiceTableRestaurant iServiceTableRestaurant;
 
-    @GetMapping("/retrieveAlltableRestaurant")
-    public List<TableRestaurant> getTableRestaurant() {
-        List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurant();
-        return list;
-    }
     @GetMapping("/showAll/{idrestaurant}")
     public List<TableRestaurant> getTableRestaurantbyrestaurant(@PathVariable("idrestaurant")Integer id) {
         List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurantByRestaurant(id);
         return list;
     }
+    @GetMapping("/retrieveAlltableRestaurant")
+    public List<TableRestaurant> getTableRestaurant() {
+        List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurant();
+        return list;
+    }
+
     @GetMapping("/details/{tableid}")
     public TableRestaurant OneTable(@PathVariable("tableid")Integer id) {
         return  iServiceTableRestaurant.retrieveTableRestaurant(id);

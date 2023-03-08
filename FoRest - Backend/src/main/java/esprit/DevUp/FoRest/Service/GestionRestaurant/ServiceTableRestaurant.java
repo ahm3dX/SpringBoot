@@ -27,7 +27,7 @@ public class ServiceTableRestaurant implements IServiceTableRestaurant {
     }
     @Override
     public List<TableRestaurant> retrieveAllTableRestaurantByRestaurant(Integer idrestaurant) {
-        return tableRepository.findAll();
+        return tableRepository.findAllByRestoIdRestaurant(idrestaurant);
     }
     @Override
     public TableRestaurant addTableRestaurant(Integer id,TableRestaurant u) {
