@@ -11,6 +11,7 @@ import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
+import java.security.PublicKey;
 import java.util.*;
 
 
@@ -32,7 +33,7 @@ public class EventService implements IEventService {
         System.out.println("event scheduler working");
     }
 
-    @Override
+   /* @Override
     public Event addEvent(Event e, int idUser) {
 
         User user = userRepository.findById(idUser).get();
@@ -40,6 +41,16 @@ public class EventService implements IEventService {
         e.setUser(user);
         e.setState(state.PENDING);
         return eventRepository.save(e);
+    }*/
+    @Override
+    public Event addEvent(Event e, int idUser){
+        User u= userRepository.findById(idUser).get();
+        e.setUser(u);
+        e.setState(state.PENDING);
+        eventRepository.save(e);
+        return e;
+
+
     }
 
     @Override
@@ -111,21 +122,29 @@ public class EventService implements IEventService {
             Set<Creno> op = e.getCrenos();
             Optional<Creno> cr = op.stream().findFirst();
             Creno c = cr.get();
-            ///Creno c = e.getCrenos().stream().findFirst().get();
+            //Creno c = e.getCrenos().stream().findFirst().get();
             Date datefinC = c.getDateFin();
             Date dateDeb = c.getDateDebut();
 
             System.out.println("datefin" + datefinC.getTime());
             System.out.println("todauy" + today.getTime());
+            long d =dateDeb.getTime() - today.getTime();
+            System.out.println("d="+d);
+           // System.out.println("before " + e.state);
 
 
-            if (datefinC.getTime() - today.getTime() < 3600 * 24 * 1000) {
+            if (datefinC.getTime() - today.getTime() <  3600 * 24 * 1000) {
 
+                e.setState(state.DONE);
+             //   System.out.println("after"+ e.state);
+
+                //e.setState(state.DONE);//b
                 System.out.println("DONE ");
-                e.setState(state.DONE);//b
+                eventRepository.save(e);
+
             }
 
-            if (dateDeb.getTime() - today.getTime()  > 3600 * 24 * 1000) {
+            if (dateDeb.getTime() - today.getTime()  >3600 * 24 * 1000) {
                 Optional<Event> ev = eventRepository.findById(e.getIdEvent());
                 String nameEv = e.getName();
 
@@ -142,7 +161,7 @@ public class EventService implements IEventService {
                     // mailMessage.setSubject(e.get().getObjectif());
 
                     mailMessage.setTo(mailUser);
-                    mailMessage.setText("qsdqsdqsdqsd");
+                    mailMessage.setText("dont forget to assist your event");
                     mailMessage.setSubject("you have an event tomorrow : " + nameEv);
 
                     javaMailSender.send(mailMessage);
