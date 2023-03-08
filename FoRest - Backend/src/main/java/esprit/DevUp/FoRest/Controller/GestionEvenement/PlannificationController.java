@@ -1,8 +1,8 @@
 package esprit.DevUp.FoRest.Controller.GestionEvenement;
 
-
-import esprit.DevUp.FoRest.Entity.Plannification;
-import esprit.DevUp.FoRest.Service.GestionEvenement.IPlannificationService;
+import esprit.DevUp.FoRest.Entity.Event.*;
+import esprit.DevUp.FoRest.Repository.EventRepository.*;
+import esprit.DevUp.FoRest.Service.EventServices.*;
 import lombok.AllArgsConstructor;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

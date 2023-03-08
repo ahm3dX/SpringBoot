@@ -1,12 +1,10 @@
 package esprit.DevUp.FoRest.Controller.GestionEvenement;
 
 
-import esprit.DevUp.FoRest.Entity.Creno;
-import esprit.DevUp.FoRest.Entity.Event;
-import esprit.DevUp.FoRest.Repository.GestionEvenement.CrenoRepository;
-import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
-import esprit.DevUp.FoRest.Service.GestionEvenement.ICrenoService;
-import esprit.DevUp.FoRest.Service.GestionEvenement.IEventService;
+
+import esprit.DevUp.FoRest.Entity.Event.*;
+import esprit.DevUp.FoRest.Repository.EventRepository.*;
+import esprit.DevUp.FoRest.Service.EventServices.*;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

@@ -1,8 +1,6 @@
 package esprit.DevUp.FoRest.Service;
 
-import esprit.DevUp.FoRest.Entity.Event.Event;
 import esprit.DevUp.FoRest.Entity.User;
-import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
 import esprit.DevUp.FoRest.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -16,9 +14,6 @@ public class ServiceUser implements ISeviceUser {
 
     @Autowired
     UserRepository userRepository;
-    @Autowired
-    private EventRepository eventRepository;
-
     @Override
     public List<User> retrieveAllUsers() {
         return userRepository.findAll();

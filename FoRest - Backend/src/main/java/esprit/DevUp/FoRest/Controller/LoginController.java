@@ -5,7 +5,6 @@ import esprit.DevUp.FoRest.Config.JwtTokenUtil;
 import esprit.DevUp.FoRest.Entity.AuthRequest;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Service.ISeviceUser;
-import org.jetbrains.annotations.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;

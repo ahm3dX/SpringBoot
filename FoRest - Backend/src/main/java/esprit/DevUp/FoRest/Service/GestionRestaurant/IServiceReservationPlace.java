@@ -1,17 +1,18 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.others.ReservationPlace;
+import esprit.DevUp.FoRest.Entity.Restaurant.ReservationPlace;
 
 import java.util.List;
 
 public interface IServiceReservationPlace {
     List<ReservationPlace> retrieveAllReservationPlace();
-
-    ReservationPlace addReservationPlace (ReservationPlace u);
-
-    ReservationPlace updateReservationPlace (ReservationPlace u);
+    List<ReservationPlace> showbytable(Integer integer);
 
     ReservationPlace retrieveReservationPlace(Integer idReservationPlace);
+
+    ReservationPlace addReservationPlace (Integer idmenu,Integer iduser, Integer idtable, ReservationPlace u);
+
+    ReservationPlace updateReservationPlace (ReservationPlace u);
 
     void removeReservationPlace(Integer idReservationPlace);
 }

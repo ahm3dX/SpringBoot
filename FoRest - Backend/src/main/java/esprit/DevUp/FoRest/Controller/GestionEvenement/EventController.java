@@ -1,10 +1,9 @@
 package esprit.DevUp.FoRest.Controller.GestionEvenement;
 
-
-import esprit.DevUp.FoRest.Entity.Event;
+import esprit.DevUp.FoRest.Entity.Event.*;
+import esprit.DevUp.FoRest.Repository.EventRepository.*;
+import esprit.DevUp.FoRest.Service.EventServices.*;
 import esprit.DevUp.FoRest.Entity.User;
-import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
-import esprit.DevUp.FoRest.Service.GestionEvenement.IEventService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;

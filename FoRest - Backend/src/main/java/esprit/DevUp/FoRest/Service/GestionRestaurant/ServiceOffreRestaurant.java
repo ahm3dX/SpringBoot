@@ -1,7 +1,7 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.others.OffreRestaurant;
-import esprit.DevUp.FoRest.Entity.others.Restaurant;
+import esprit.DevUp.FoRest.Entity.Restaurant.OffreRestaurant;
+import esprit.DevUp.FoRest.Entity.Restaurant.Restaurant;
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.OffreRestaurantRepository;
 import esprit.DevUp.FoRest.Repository.GestionRestaurant.RestaurantRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,12 +15,19 @@ public class ServiceOffreRestaurant implements IServiceOffreRestaurant {
     @Autowired
     RestaurantRepository restaurantRepository;
     @Override
-    public List<OffreRestaurant> retrieveAllROffreestaurants(Integer id) {
-        System.out.println(id);
+    public OffreRestaurant retrieveOneOffre(Integer Offreidrestaurant) {// offre details
+        return offrerestaurantRepository.findById(Offreidrestaurant).get();
+    }
+    @Override
+    public List<OffreRestaurant> retrieveAllOffer() {// te5ou les offre el kol
+        return offrerestaurantRepository.findAll();
+    }
+
+    @Override
+    public List<OffreRestaurant> retrieveAllOffreByRestaurant(Integer id) {// te5ou les offre mta3 restaurant we7ed
         Restaurant restaurant= restaurantRepository.findById(id).get();
         return offrerestaurantRepository.findByRestaurant(restaurant);
     }
-
     @Override
     public OffreRestaurant addOffreRestaurant(OffreRestaurant u,Integer id) {
         Restaurant restaurant= restaurantRepository.findById(id).get();
@@ -33,10 +40,6 @@ public class ServiceOffreRestaurant implements IServiceOffreRestaurant {
         return offrerestaurantRepository.save(u);
     }
 
-    @Override
-    public OffreRestaurant retrieveOffreRestaurant(Integer Offreidrestaurant) {
-        return offrerestaurantRepository.findById(Offreidrestaurant).orElse(null);
-    }
 
     @Override
     public void removeOffreRestaurant(Integer idOffrerestaurant) {

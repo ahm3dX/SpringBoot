@@ -1,6 +1,6 @@
 package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.others.ReservationPlace;
+import esprit.DevUp.FoRest.Entity.Restaurant.ReservationPlace;
 import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceReservationPlace;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -12,7 +12,7 @@ import java.util.List;
 @RestController
 @AllArgsConstructor
 @NoArgsConstructor
-@RequestMapping("/ReservatonPlace")
+@RequestMapping("/ReservationPlace")
 public class ReservationPlaceController {
     @Autowired
     IServiceReservationPlace iServiceReservationPlace;
@@ -22,9 +22,17 @@ public class ReservationPlaceController {
         return list;
     }
 
-    @PostMapping("/addReservationPlace")
-    public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace) {
-        ReservationPlace r = iServiceReservationPlace.addReservationPlace(reservationPlace);
+    @GetMapping("/retrieveAllReservationPlace/{table}")
+    public List<ReservationPlace> getReservationPlacebyresto(@PathVariable("table") Integer idresto) {
+        List<ReservationPlace> list = iServiceReservationPlace.showbytable(idresto);
+        return list;
+    }
+    @PostMapping("/addReservationPlace/{iduser}/{idmenu}/{idtable}")
+    public ReservationPlace addReservationPlace(@RequestBody ReservationPlace reservationPlace,
+                                                @PathVariable("iduser") Integer iduser,
+                                                @PathVariable("idtable") Integer idtable,
+                                                @PathVariable("idmenu") Integer idmenu) {
+        ReservationPlace r = iServiceReservationPlace.addReservationPlace(idmenu,iduser,idtable,reservationPlace);
         return r;
     }
     @DeleteMapping("/removeReservationPlace/{idReservationPlace}")
@@ -34,7 +42,7 @@ public class ReservationPlaceController {
 
     @PutMapping("/updateReservationPlace/{idReservationPlace}")
     public ReservationPlace updateOffreRestaurant(@RequestBody ReservationPlace place) {
-        ReservationPlace reservationPlace= updateOffreRestaurant(place);
+        ReservationPlace reservationPlace= iServiceReservationPlace.updateReservationPlace(place);
         return reservationPlace;
     }
 }
