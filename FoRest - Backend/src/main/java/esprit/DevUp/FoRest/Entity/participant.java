@@ -1,12 +1,10 @@
 package esprit.DevUp.FoRest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import esprit.DevUp.FoRest.Entity.others.accessRestaurant;
 import lombok.*;
 
 import javax.persistence.*;
 import java.io.Serializable;
-import java.util.Set;
 
 @Entity
 @NoArgsConstructor
