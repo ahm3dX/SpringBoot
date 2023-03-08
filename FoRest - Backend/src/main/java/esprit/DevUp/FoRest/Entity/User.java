@@ -35,7 +35,7 @@ public class User implements Serializable {
     private TypeUser typeUser;
 
 
-    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "user")
+    @OneToMany(fetch = FetchType.EAGER ,mappedBy = "user")
     @JsonIgnore
     private Set<Event> event;
 
