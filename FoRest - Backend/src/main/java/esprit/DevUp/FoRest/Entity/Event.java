@@ -1,7 +1,6 @@
 package esprit.DevUp.FoRest.Entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import esprit.DevUp.FoRest.Repository.UserRepository;
 import lombok.*;
 import org.hibernate.annotations.OnDelete;
 import org.hibernate.annotations.OnDeleteAction;
@@ -31,12 +30,13 @@ public class Event implements Serializable {
 
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name = "idCreno")
+    @OnDelete(action = OnDeleteAction.CASCADE)
     private Set<Creno> crenos;
 
     //event creator
-    @ManyToOne(fetch = FetchType.LAZY, optional = false)
+    @ManyToOne//( optional = false)
    // @JoinColumn(name = "id_user", nullable = false)
-    @OnDelete(action = OnDeleteAction.CASCADE)
+   // @OnDelete(action = OnDeleteAction.CASCADE)
     @JsonIgnore
     private User user;
 

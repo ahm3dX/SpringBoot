@@ -34,10 +34,11 @@ public class EventService implements IEventService {
 
     @Override
     public Event addEvent(Event e, int idUser) {
-        e.setState(state.PENDING);
+
         User user = userRepository.findById(idUser).get();
         System.out.println(user);
         e.setUser(user);
+        e.setState(state.PENDING);
         return eventRepository.save(e);
     }
 
