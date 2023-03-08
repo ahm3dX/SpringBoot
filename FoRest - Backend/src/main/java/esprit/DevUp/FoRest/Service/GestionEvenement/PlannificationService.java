@@ -1,6 +1,7 @@
 package esprit.DevUp.FoRest.Service.GestionEvenement;
 
 import esprit.DevUp.FoRest.Entity.Plannification;
+import esprit.DevUp.FoRest.Repository.GestionEvenement.CrenoRepository;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.PlannificationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,14 +18,14 @@ public class PlannificationService implements IPlannificationService {
 
     @Autowired
     PlannificationRepository plannificationRepository;
+    private final CrenoRepository crenoRepository;
 
-    @Override
-    public Plannification addPlan(Plannification p) {
+       @Override
+        public Plannification addPlan(Plannification p, Integer idCreno) {
 
 
-        return plannificationRepository.save(p);
-    }
-
+            return plannificationRepository.save(p);
+        }
     @Override
     public List<Plannification> getAllPlannifications() {
         return plannificationRepository.findAll();
@@ -36,4 +37,6 @@ public class PlannificationService implements IPlannificationService {
 
         return plannificationRepository.findById(id);
     }
+
+
 }

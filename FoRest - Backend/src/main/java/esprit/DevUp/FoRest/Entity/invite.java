@@ -1,9 +1,17 @@
 package esprit.DevUp.FoRest.Entity;
 
+import lombok.*;
+
 import javax.persistence.*;
 import java.io.Serializable;
+import java.util.Set;
 
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@ToString
+@Getter
+@Setter
 @Table(name="invite")
 public class invite implements Serializable {
     @Id
@@ -13,6 +21,8 @@ public class invite implements Serializable {
     int phoneNumber ;
     String email ;
 
+//    @ManyToMany()
+//    Set<Event> event;
 
 
 

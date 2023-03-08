@@ -2,8 +2,10 @@ package esprit.DevUp.FoRest.Service.GestionEvenement;
 
 import esprit.DevUp.FoRest.Entity.Creno;
 import esprit.DevUp.FoRest.Entity.Event;
+import esprit.DevUp.FoRest.Entity.Plannification;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.CrenoRepository;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
+import esprit.DevUp.FoRest.Repository.GestionEvenement.PlannificationRepository;
 import lombok.AllArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -17,15 +19,23 @@ import java.util.Optional;
 public class CrenoService implements ICrenoService {
     CrenoRepository crenoRepository;
     EventRepository eventRepository;
+    private final PlannificationRepository plannificationRepository;
 
     @Override
     public Creno addCreno(Creno c, int idEvent) {
-
         Event event= eventRepository.findById(idEvent).get();
         c.setEvent(event);
-        crenoRepository.save(c);
-
+        addPlanification(c);
         return c;
+    }
+
+    private void addPlanification(Creno c) {
+        Plannification p = new Plannification();
+        p.setDateP(c.getDateDebut());
+        p.setCreno(c);
+        p.setOccurrence(c.getOccurence());
+        plannificationRepository.save(p);
+        crenoRepository.save(c);
     }
  /*   @Override courclassroom = creno  classe = event
 

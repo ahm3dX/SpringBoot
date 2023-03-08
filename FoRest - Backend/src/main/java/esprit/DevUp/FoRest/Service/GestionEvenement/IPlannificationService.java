@@ -8,11 +8,15 @@ import java.util.Optional;
 public interface IPlannificationService {
 
     //    List<Plannification> retrieveAllPlannification();
-    Plannification addPlan(Plannification p );
+
+    //public Creno addCreno(Creno c, int idEvent)
+    public Plannification addPlan(Plannification p, Integer idCreno);
 
     List<Plannification> getAllPlannifications();
 
     Optional<Plannification> getPlannification(int id);
+
+
 
 }
 

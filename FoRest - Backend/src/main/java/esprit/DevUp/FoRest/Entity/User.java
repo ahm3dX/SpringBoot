@@ -2,11 +2,13 @@ package esprit.DevUp.FoRest.Entity;
 
 import java.io.Serializable;
 import java.util.Date;
-import java.util.List;
+import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import esprit.DevUp.FoRest.Entity.Restaurant.accessRestaurant;
+import esprit.DevUp.FoRest.Entity.TypeUser;
+import esprit.DevUp.FoRest.Entity.others.accessRestaurant;
 import lombok.*;
+
 import javax.persistence.*;
 
 @Getter
@@ -14,24 +16,32 @@ import javax.persistence.*;
 @ToString
 @RequiredArgsConstructor
 @Entity
-@Table(name="Users")
-public class User implements Serializable{
+@Table(name = "Users")
+public class User implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "userid", nullable = false)
-    private Integer userid;
+    @Column(name = "id_user", nullable = false)
+    private int id_user;
     private String firstname;
     private String Lastname;
-    private String userName;
     private String Email;
     private String Password;
     private int phone_number;
     private String gender;
     private int CIN;
+
     private Date DateNaissance;
     @Enumerated(EnumType.STRING)
     private TypeUser typeUser;
-    @OneToMany(mappedBy = "user")
+
+
+    @OneToMany(fetch = FetchType.LAZY ,mappedBy = "user")
     @JsonIgnore
-    private List<accessRestaurant> accessRestaurants;
+    private Set<Event> event;
+
+
+    @OneToMany(mappedBy = "usersP")
+    @JsonIgnore
+    private Set<participant> participants;
 }
+
