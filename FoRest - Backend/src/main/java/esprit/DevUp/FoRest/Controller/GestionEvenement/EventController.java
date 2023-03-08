@@ -1,11 +1,9 @@
 package esprit.DevUp.FoRest.Controller.GestionEvenement;
 
 
-import esprit.DevUp.FoRest.Entity.EmailDetails;
 import esprit.DevUp.FoRest.Entity.Event;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
-import esprit.DevUp.FoRest.Service.GestionEvenement.IEmailService;
 import esprit.DevUp.FoRest.Service.GestionEvenement.IEventService;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,15 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.Set;
 
 @AllArgsConstructor
 @RestController
 @RequestMapping("event")
 public class EventController {
     private IEventService iEventService;
-    @Autowired
-    private IEmailService emailService;
+  //  @Autowired
+  //  private IEmailService emailService;
     @Autowired
     private EventRepository eventRepository;
 
@@ -46,7 +43,8 @@ public class EventController {
     @PostMapping("addevent/{id}")
     public ResponseEntity<Event> addEvent(@PathVariable int id, @RequestBody Event e) {
         System.out.println(e);
-        iEventService.addEvent(e, id);
+        iEventService.addEvent(e,id);
+
         return new ResponseEntity<>(HttpStatus.CREATED);
 
     }
