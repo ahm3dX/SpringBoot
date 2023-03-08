@@ -1,7 +1,6 @@
 package esprit.DevUp.FoRest.Service.GestionEvenement;
 
-import esprit.DevUp.FoRest.Entity.Creno;
-import esprit.DevUp.FoRest.Entity.Event;
+import esprit.DevUp.FoRest.Entity.Event.Event;
 import esprit.DevUp.FoRest.Entity.User;
 
 import java.util.List;

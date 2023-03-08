@@ -1,4 +1,4 @@
-package esprit.DevUp.FoRest.Entity;
+package esprit.DevUp.FoRest.Entity.Event;
 
 import lombok.AllArgsConstructor;
 import lombok.Data;

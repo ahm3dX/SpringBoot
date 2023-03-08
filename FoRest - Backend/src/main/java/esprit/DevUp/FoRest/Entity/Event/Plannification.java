@@ -1,4 +1,4 @@
-package esprit.DevUp.FoRest.Entity;
+package esprit.DevUp.FoRest.Entity.Event;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;

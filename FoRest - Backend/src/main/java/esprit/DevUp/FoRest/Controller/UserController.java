@@ -1,6 +1,5 @@
 package esprit.DevUp.FoRest.Controller;
 
-import esprit.DevUp.FoRest.Entity.Event;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Service.ISeviceUser;
 import lombok.AllArgsConstructor;

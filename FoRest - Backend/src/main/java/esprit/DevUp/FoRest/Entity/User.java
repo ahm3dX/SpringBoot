@@ -5,8 +5,9 @@ import java.util.Date;
 import java.util.Set;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import esprit.DevUp.FoRest.Entity.TypeUser;
-import esprit.DevUp.FoRest.Entity.others.accessRestaurant;
+import esprit.DevUp.FoRest.Entity.Event.Event;
+import esprit.DevUp.FoRest.Entity.Event.participant;
+//import esprit.DevUp.FoRest.Entity.others.accessRestaurant;
 import lombok.*;
 
 import javax.persistence.*;
