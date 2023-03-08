@@ -1,6 +1,6 @@
 package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.Restaurant.TableRestaurant;
+import esprit.DevUp.FoRest.Entity.others.TableRestaurant;
 import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceTableRestaurant;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -22,20 +22,10 @@ public class TableController {
         List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurant();
         return list;
     }
-    @GetMapping("/showAll/{idrestaurant}")
-    public List<TableRestaurant> getTableRestaurantbyrestaurant(@PathVariable("idrestaurant")Integer id) {
-        List<TableRestaurant> list = iServiceTableRestaurant.retrieveAllTableRestaurantByRestaurant(id);
-        return list;
-    }
-    @GetMapping("/details/{tableid}")
-    public TableRestaurant OneTable(@PathVariable("tableid")Integer id) {
-        return  iServiceTableRestaurant.retrieveTableRestaurant(id);
-    }
 
-    @PostMapping("/addTableRestaurant/{idrestaurant}")
-    public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace,
-    @PathVariable("idrestaurant")Integer idrestaurant) {
-        TableRestaurant r = iServiceTableRestaurant.addTableRestaurant(idrestaurant,reservationPlace);
+    @PostMapping("/addTableRestaurant")
+    public TableRestaurant addTableRestaurant(@RequestBody TableRestaurant reservationPlace) {
+        TableRestaurant r = iServiceTableRestaurant.addTableRestaurant(reservationPlace);
         return r;
     }
 

@@ -1,21 +1,17 @@
 package esprit.DevUp.FoRest.Service.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.Restaurant.Menu;
-import org.springframework.web.multipart.MultipartFile;
+import esprit.DevUp.FoRest.Entity.others.Menu;
 
-import java.io.IOException;
 import java.util.List;
 
 public interface IServiceMenu {
     List<Menu> retrieveAllMenu();
 
-    List<Menu> retrieveAllMenuByRestaurant(Integer Restaurant_id);
-    Menu addMenu (Menu u, MultipartFile image) throws IOException;
+    Menu addMenu (Menu u);
 
     Menu updateMenu (Menu u);
 
     Menu retrieveMenu(Integer idmenu);
 
     void removeMenu(Integer idmenu);
-
 }

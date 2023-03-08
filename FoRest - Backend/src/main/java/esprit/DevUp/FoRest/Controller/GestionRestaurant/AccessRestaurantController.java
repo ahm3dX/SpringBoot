@@ -1,6 +1,6 @@
 package esprit.DevUp.FoRest.Controller.GestionRestaurant;
 
-import esprit.DevUp.FoRest.Entity.Restaurant.accessRestaurant;
+import esprit.DevUp.FoRest.Entity.others.accessRestaurant;
 import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceAccessRestaurant;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
@@ -16,26 +16,15 @@ import java.util.List;
 public class AccessRestaurantController {
     @Autowired
     IServiceAccessRestaurant serviceAccessRestaurant;
-    @GetMapping("/All")
+    @GetMapping("/retrieveAllaccessRestaurant")
     public List<accessRestaurant> getaccessRestaurant() {
-        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllaccess();
+        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllaccessRestaurant();
         return list;
-    }
-        @GetMapping("/details/{idoffre}")
-    public accessRestaurant OneAccesRestaurant(@PathVariable("idoffre") Integer idoffre) {
-        return serviceAccessRestaurant.OneAccessRestaurant(idoffre);
     }
 
-    @GetMapping("{idrestaurant}/retrieveAllAccessRestaurant")
-    public List<accessRestaurant> getaccessRestaurantbyrestaurant(@PathVariable("idrestaurant") Integer idRestaurant) {
-        List<accessRestaurant> list = serviceAccessRestaurant.retrieveAllAccessbyRestaurant(idRestaurant);
-        return list;
-    }
-    @PostMapping("/addaccessRestaurant/{iduser}/{idoffre}")
-    public accessRestaurant addaccessRestaurant(@RequestBody accessRestaurant accessRestaurant,
-                                                @PathVariable("iduser") Integer iduser,
-                                                @PathVariable("idoffre") Integer idoffre) {
-        accessRestaurant r = serviceAccessRestaurant.addaccessRestaurant(accessRestaurant,iduser,idoffre);
+    @PostMapping("/addaccessRestaurant")
+    public accessRestaurant addaccessRestaurant(@RequestBody accessRestaurant accessRestaurant) {
+        accessRestaurant r = serviceAccessRestaurant.addaccessRestaurant(accessRestaurant);
         return r;
     }
 

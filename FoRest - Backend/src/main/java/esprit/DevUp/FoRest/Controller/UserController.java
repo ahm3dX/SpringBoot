@@ -1,5 +1,6 @@
 package esprit.DevUp.FoRest.Controller;
 
+import esprit.DevUp.FoRest.Entity.Event;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Service.ISeviceUser;
 import lombok.AllArgsConstructor;
@@ -17,7 +18,6 @@ public class UserController {
 
     @Autowired
     ISeviceUser iSevice;
-
 
     // http://localhost:8089/Forest/User/retrieveAllUsers
     @GetMapping("/retrieveAllUsers")

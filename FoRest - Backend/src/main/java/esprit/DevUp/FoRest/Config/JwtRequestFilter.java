@@ -7,6 +7,8 @@ import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import esprit.DevUp.FoRest.Entity.CurrentUser;
+import esprit.DevUp.FoRest.Repository.UserRepository;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,6 +32,8 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 
 	@Autowired
 	private CustomUserDetailsService userDetailsService;
+	@Autowired
+	private UserRepository userRepository;
 
 	@Autowired
 	private JwtTokenUtil jwtTokenUtil;
@@ -42,6 +46,7 @@ public class JwtRequestFilter extends OncePerRequestFilter {
 			if (jwt != null && jwtTokenUtil.validateToken(jwt)) {
 				String ident = jwtTokenUtil.getIdFromToken(jwt);
 				UserDetails userDetails = userDetailsService.loadUserByUsername(ident);
+				CurrentUser.setCurrent(userRepository.findByUserName(ident));
 				UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(
 						userDetails, null, userDetails.getAuthorities());
 				authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(request));

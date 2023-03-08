@@ -1,6 +1,6 @@
 package esprit.DevUp.FoRest.Service;
 
-import esprit.DevUp.FoRest.Entity.Event;
+import esprit.DevUp.FoRest.Entity.Event.Event;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Repository.GestionEvenement.EventRepository;
 import esprit.DevUp.FoRest.Repository.UserRepository;
@@ -43,4 +43,6 @@ public class ServiceUser implements ISeviceUser {
     public void removeUser(Integer idUser) {
         userRepository.deleteById(idUser);
     }
+
+
 }
