@@ -40,11 +40,11 @@ public class EventController {
 
 
     @PostMapping("addevent/{id}")
-    public ResponseEntity<Event> addEvent(@PathVariable int id, @RequestBody Event e) {
+    public Event addEvent(@PathVariable int id, @RequestBody Event e) {
         System.out.println(e);
         iEventService.addEvent(e,id);
 
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return e;
 
     }
 

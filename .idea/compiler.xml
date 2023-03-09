@@ -11,7 +11,7 @@
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
-      <module name="FoRest" target="1.8" />
+      <module name="FoRest" target="11" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">

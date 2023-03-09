@@ -5,8 +5,12 @@ import esprit.DevUp.FoRest.Service.GestionRestaurant.IServiceAccessRestaurant;
 import lombok.AllArgsConstructor;
 import lombok.NoArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.io.IOException;
 import java.util.List;
 
 @RestController
@@ -48,5 +52,13 @@ public class AccessRestaurantController {
     public accessRestaurant updateaccessRestaurant(@RequestBody accessRestaurant idAccessRestaurant) {
         accessRestaurant accessRestaurant= serviceAccessRestaurant.updateaccessRestaurant(idAccessRestaurant);
         return accessRestaurant;
+    }
+    @PostMapping(path="certifGen/{restauid}")
+    public ResponseEntity<byte[]> product(@PathVariable("restauid") Integer restid) throws IOException, InterruptedException{
+        //Integer certi = restid.intValue();
+        byte[] res = serviceAccessRestaurant.accessrestaurant(restid);
+        return ResponseEntity.ok()
+                .header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=Certificate.pdf")
+                .contentType(MediaType.APPLICATION_PDF).body(res);
     }
 }
