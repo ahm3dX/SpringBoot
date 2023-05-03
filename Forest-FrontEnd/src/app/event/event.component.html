@@ -1,0 +1,75 @@
+<button class="btn btn-lg btn-outline-primary" (click)="open(content)">Launch demo modal</button>
+
+<ng-template #content let-modal>
+	<div class="modal-header">
+		<h4 class="modal-title" id="modal-basic-title">Profile update</h4>
+		<button type="button" class="btn-close" aria-label="Close" (click)="modal.dismiss('Cross click')"></button>
+	</div>
+	<div class="modal-body">
+		<form>
+			<div class="mb-3">
+				<label for="dateOfBirth">Date of birth</label>
+				<div class="input-group">
+
+          <input class="form-control" name="name" [(ngModel)]="name"/>
+        </div>
+        <div class="input-group">
+
+          <input class="form-control" name="description" [(ngModel)]="description"/>
+        </div>
+        <div class="input-group">
+          <input class="form-control" name="objectif" [(ngModel)]="objectif"/>
+        </div>
+        <div class="input-group">
+          <input class="form-control" name="location" [(ngModel)]="location"/>
+  
+				</div>
+        <div class="input-group">
+          <input class="form-control" 
+          ngbDatepicker
+          #dp="ngbDatepicker"
+          (click)="dp.toggle()"
+          name="dd" [(ngModel)]="datedebut" placeholder="date début"/>
+  
+				</div>
+        <div class="input-group">
+          <input class="form-control" 
+          ngbDatepicker
+          #dp="ngbDatepicker"
+          (click)="dp.toggle()"
+
+          name="df" [(ngModel)]="datefin" placeholder="date fin"/>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div class="modal-footer">
+		<button type="button" class="btn btn-outline-dark" (click)="modal.close('Save click')">Save</button>
+	</div>
+</ng-template>
+
+<div class="container">
+  
+
+    <div *ngFor="let event of events" style="color:black">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+              <h5 class="card-title">{{event.idEvent}}</h5>
+              <p class="card-text">{{event.description}}</p>
+              <div *ngIf="event.state == 'DONE'">
+                <span class="badge badge-warning">{{event.state}}</span>
+              </div>
+              <div *ngIf="event.state == 'PENDING'">
+                <span class="badge badge-info">{{event.state}}</span>
+              </div>
+              <div *ngIf="event.state == 'VALIDATED'">
+                <span class="badge badge-success">{{event.state}}</span>
+              </div>
+              <div *ngIf="event.state == 'DENIED'">
+                <span class="badge badge-danger">{{event.state}}</span>
+              </div>
+              <a href="#" class="btn btn-primary">{{event.idEvent}}</a>
+            </div>
+          </div>
+    </div>
+</div>
