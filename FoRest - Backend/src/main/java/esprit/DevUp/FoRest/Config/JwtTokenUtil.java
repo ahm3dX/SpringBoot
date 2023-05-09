@@ -75,6 +75,8 @@ public class JwtTokenUtil {
 	public String getIdFromToken(String token) {
 		token = token.startsWith("Bearer ") ? token.substring(7, token.length()) : token;
 		Claims cc = jwtUtil.getAllClaimsFromToken(token);
+		System.out.println("********************************************************************");
+		System.out.println(cc);
 		return cc.get("username").toString();
 	}
 }

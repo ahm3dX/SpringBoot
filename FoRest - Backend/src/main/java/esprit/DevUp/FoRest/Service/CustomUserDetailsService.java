@@ -13,10 +13,17 @@ import java.util.ArrayList;
 public class CustomUserDetailsService implements UserDetailsService {
     @Autowired
     private UserRepository userRepository;
+
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
 
         User user = userRepository.findByUserName(userName);
         return new org.springframework.security.core.userdetails.User(user.getUserName(), user.getPassword(), new ArrayList<>());
+    }
+
+    public User loadUser(String userName) throws UsernameNotFoundException {
+
+        return userRepository.findByUserName(userName);
+
     }
 }

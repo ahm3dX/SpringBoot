@@ -15,4 +15,6 @@ public interface PostRepository extends JpaRepository<Post, Integer> {
     List<Post> getPostByOwner_IdUser(Integer idUser);
     List<Post> findPostByNbFlagedGreaterThan(int x);
 
+    Post findByIdPost(int i);
+
 }

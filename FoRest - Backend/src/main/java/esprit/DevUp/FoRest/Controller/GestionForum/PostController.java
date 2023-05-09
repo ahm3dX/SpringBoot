@@ -1,5 +1,6 @@
 package esprit.DevUp.FoRest.Controller.GestionForum;
 
+import esprit.DevUp.FoRest.Config.JwtRequestFilter;
 import esprit.DevUp.FoRest.Entity.Forum.Post;
 import esprit.DevUp.FoRest.Entity.User;
 import esprit.DevUp.FoRest.Service.GestionForum.IservicePost;
@@ -18,11 +19,12 @@ public class PostController {
         IservicePost iSevice;
         @PostMapping("/addPost")
         public Post AddPost(@RequestBody Post post) {
-
+                System.out.println(JwtRequestFilter.currentUser);
+               post.setOwner(JwtRequestFilter.currentUser);
                 return iSevice.addPost(post);
         }
-        @GetMapping("/GetPost/{idpost}")
-        public Post AddPost(@PathVariable("idpost") Integer idPost) {
+        @GetMapping("/GetPost/{idPost}")
+        public Post AddPost(@PathVariable("idPost") Integer idPost) {
 
                 return iSevice.retrievePost(idPost);
         }

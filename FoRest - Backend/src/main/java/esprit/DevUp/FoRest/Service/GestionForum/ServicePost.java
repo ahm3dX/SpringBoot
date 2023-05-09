@@ -34,6 +34,7 @@ public class ServicePost implements IservicePost{
     ServiceUser serviceUser;
     @Override
     public Post addPost(Post p) {
+
         return postRepository.save(p);
     }
 
@@ -44,7 +45,8 @@ public class ServicePost implements IservicePost{
 
     @Override
     public Post retrievePost(Integer postID) {
-        return postRepository.findById(postID).get();
+        return postRepository.findByIdPost(postID);
+
     }
 
     @Override

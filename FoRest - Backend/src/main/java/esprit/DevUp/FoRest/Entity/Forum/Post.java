@@ -22,8 +22,8 @@ public class Post {
         private String question;
         //private PostType postType;
        // private String tags;
-        private Integer upvotes;
-        private Integer downvote;
+        private Integer upvotes=0;
+        private Integer downvote=0;
         private Integer nbFlaged=0;
         @Enumerated
         private PostStatus postStatus=PostStatus.Open;
