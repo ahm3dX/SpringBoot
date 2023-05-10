@@ -24,8 +24,8 @@ public interface IservicePost {
     Integer GetUserScore(Integer iduser);
     User mostActiveUser();
     List<User> topUsersOfTheMonth();
-    void Upvote(Post p);
-    void Downvote(Post p);
+    boolean Upvote(Post p);
+    boolean Downvote(Post p);
     List<Post> getFlaggedPosts();
     User mostFlaggedUsers();
     Bannings userBanStatus(User user);

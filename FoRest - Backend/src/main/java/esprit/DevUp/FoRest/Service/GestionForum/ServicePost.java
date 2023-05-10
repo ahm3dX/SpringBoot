@@ -103,28 +103,37 @@ public class ServicePost implements IservicePost{
 
         return score;
     }
-
+    // a3tik akthar wa7ed habat post w comments in this month
     @Override
     public User mostActiveUser() {
         return null;
     }
-
+    //hathi ya sayed rahi tet5dem acanci ki tjib comments w post w score mta3 fi month hatha w tzidhom 9adach active w tejma3 w ta3TI
+    // a7san user fihom , ps: use design thinking methode to make it calculate for one user in the month than just make this methode loop
+    // on all users and give the max or the best 5 for exemples when you give it int of 5 as param
     @Override
     public List<User> topUsersOfTheMonth() {
         return null;
     }
 
     @Override
-    public void Upvote(Post p) {
-    p.setUpvotes(p.getUpvotes()+1);
-    postRepository.save(p);
+    public boolean Upvote(Post p) {
+        try {
+            p.setUpvotes(p.getUpvotes()+1);
+            postRepository.save(p);
+            return true;
+        }catch (Exception e){
+            return false;
+        }
+
     }
 
     @Override
-    public void Downvote(Post p) {
+    public boolean Downvote(Post p) {
         p.setDownvote(p.getDownvote()+1);
         postRepository.save(p);
 
+        return false;
     }
 
     @Override

@@ -8,7 +8,7 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 @Repository
 public interface PostRepository extends JpaRepository<Post, Integer> {
-    @Query(value = "Select * From post p  Order by (p.upvotes - p.downvote) LIMIT 1",nativeQuery = true)
+    @Query(value = "Select * From post p  Order by (p.upvotes - p.downvote) DESC LIMIT 1",nativeQuery = true)
     Post getBestPostSQL();
 
     @Query("select p from Post p where p.owner.userid = ?1")

@@ -2,6 +2,8 @@ package esprit.DevUp.FoRest.Service.GestionForum;
 
 import esprit.DevUp.FoRest.Entity.Forum.Comment;
 
+import java.util.List;
+
 
 public interface IserviceComment {
 
@@ -14,5 +16,7 @@ public interface IserviceComment {
     Comment retrieveComment( Integer CommentID);
 
     void removeComment(Integer CommentID);
-    String detectForbiddenWords(Comment comment);
+    Comment detectForbiddenWords(Comment comment);
+    public List<Comment> retrieveCommentByPost(Integer PostID);
+
 }

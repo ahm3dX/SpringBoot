@@ -25,9 +25,11 @@ public class Comment {
     @Column
     private String content;
     @Column
-    private Integer upvotes;
+    private Integer upvotes=0;
     @Column
-    private Integer downvote;
+    private Integer downvote=0;
+    @Transient
+    boolean gotFlagged=false;
     @Column
     @Nullable
     private Date CommentedAt=new Date();

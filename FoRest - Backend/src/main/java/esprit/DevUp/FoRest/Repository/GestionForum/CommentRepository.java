@@ -15,4 +15,5 @@ public interface CommentRepository extends JpaRepository<Comment, Integer> {
    // List<Comment> getCommentByParentpost_IdPost(Integer idpost);
    @Query("select c from Comment c where c.parentpost.idPost = ?1")
    List<Comment> findCommentByParentpostIdPost(Integer idpost);
+   Comment getByIdComment(Integer idComment);
 }

@@ -23,6 +23,13 @@ public class PostController {
                post.setOwner(JwtRequestFilter.currentUser);
                 return iSevice.addPost(post);
         }
+        @PostMapping("/UpdatePost/{idPost}")
+        public Post AddPost(@PathVariable("idPost") Integer idPost ,@RequestBody() String content) {
+                System.out.println(JwtRequestFilter.currentUser);
+                Post p = iSevice.retrievePost(idPost);
+                p.setQuestion(content);
+                return iSevice.updatePost(p);
+        }
         @GetMapping("/GetPost/{idPost}")
         public Post AddPost(@PathVariable("idPost") Integer idPost) {
 
@@ -48,9 +55,26 @@ public class PostController {
 
                 return iSevice.GetUserPosts(idUser);
         }
+        @GetMapping("/GetMyPosts/")
+        public List<Post> GetMyPosts() {
+
+                return iSevice.GetUserPosts(JwtRequestFilter.currentUser.getUserid());
+        }
         // http://localhost:8089/Forest/Post/GetUserScore/{id}
         @GetMapping("/GetUserScore/{idUser}")
         public Integer GetUserScore(@PathVariable("idUser") Integer idUser) {
 
                 return iSevice.GetUserScore(idUser);}
+
+        @PostMapping("/UpVotePost/{idPost}")
+        public boolean UpVotePost(@PathVariable("idPost") Integer idPost) {
+                Post p = iSevice.retrievePost(idPost);
+               return   iSevice.Upvote(p);
+        }
+        @PostMapping("/DownVotePost/{idPost}")
+        public boolean DownVotePost(@PathVariable("idPost") Integer idPost) {
+                Post p = iSevice.retrievePost(idPost);
+                return   iSevice.Downvote(p);
+        }
+
 }

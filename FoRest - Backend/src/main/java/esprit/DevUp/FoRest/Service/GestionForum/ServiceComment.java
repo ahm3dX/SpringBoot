@@ -1,7 +1,9 @@
 package esprit.DevUp.FoRest.Service.GestionForum;
 
+import esprit.DevUp.FoRest.Config.JwtRequestFilter;
 import esprit.DevUp.FoRest.Entity.Forum.Comment;
 import esprit.DevUp.FoRest.Entity.Forum.Flag;
+import esprit.DevUp.FoRest.Entity.Forum.Post;
 import esprit.DevUp.FoRest.Entity.Forum.Reasons;
 import esprit.DevUp.FoRest.Repository.GestionForum.CommentRepository;
 import esprit.DevUp.FoRest.Repository.GestionForum.FlagRepository;
@@ -10,6 +12,8 @@ import esprit.DevUp.FoRest.Service.ServiceUser;
 import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 @AllArgsConstructor
@@ -22,20 +26,29 @@ public class ServiceComment  implements IserviceComment{
     CommentRepository commentRepository;
     @Autowired
     FlagRepository flagRepository;
+
     @Override
     public Comment addComment(Comment p, Integer idPost) {
-        p.setParentpost(postRepository.findById(idPost).get());
-        return  commentRepository.save(p);
+
+        p.setParentpost(postRepository.findByIdPost(idPost));
+        p.setOwner(JwtRequestFilter.currentUser);
+        return  detectForbiddenWords(p);
     }
 
     @Override
     public Comment updateComment(Comment p) {
-        return commentRepository.save(p);
+        Comment c = commentRepository.findById(p.getIdComment()).get();
+        c.setContent(p.getContent());
+        return detectForbiddenWords(c);
     }
 
     @Override
     public Comment retrieveComment(Integer CommentID) {
         return commentRepository.findById(CommentID).get();
+    }
+    @Override
+    public List<Comment>  retrieveCommentByPost(Integer PostID) {
+        return commentRepository.findCommentByParentpostIdPost(PostID);
     }
 
     @Override
@@ -44,7 +57,7 @@ public class ServiceComment  implements IserviceComment{
     }
 
     @Override
-    public String detectForbiddenWords(Comment comment) {
+    public Comment detectForbiddenWords(Comment comment) {
         String[] splited = comment.getContent().split("\\s+");
         String[] badwords = new String[]{"bhim", "bouhali"};
         String auditedContent="";
@@ -66,13 +79,16 @@ public class ServiceComment  implements IserviceComment{
             flag.setComment(comment);
             flag.setReasonType(Reasons.TooManyBadWords);
             flagRepository.save(flag);
-
+            comment.setGotFlagged(true);
+            return comment;
         }
         if (i>0){
             comment.setContent(auditedContent);
             commentRepository.save(comment);
-            return auditedContent;
-        }else return comment.getContent();
+            return comment;
+        }else {
+            commentRepository.save(comment);
+            return comment;}
 
     }
 
