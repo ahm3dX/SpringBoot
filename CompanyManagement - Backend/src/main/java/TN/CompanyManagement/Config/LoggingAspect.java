@@ -9,9 +9,9 @@ import org.springframework.stereotype.Component;
 @Slf4j
 @Aspect
 public class LoggingAspect {
-
+/*
     // avant l'exécution
-    @Before("execution(* esprit.DevUp.FoRest.Service.*.*(..))")
+    @Before("execution(* .*.*(..))")
     public void logMethodEntry(JoinPoint joinPoint) {
         String name = joinPoint.getSignature().getName();
         log.info("In method : " + name + " : ");
@@ -40,5 +40,5 @@ public class LoggingAspect {
         String name = joinPoint.getSignature().getName();
         log.info("Out of method : " + name );
     }
-
+*/
 }
