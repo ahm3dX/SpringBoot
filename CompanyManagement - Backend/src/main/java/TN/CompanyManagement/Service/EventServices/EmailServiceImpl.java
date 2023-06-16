@@ -10,10 +10,10 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class EmailServiceImpl implements IEmailService {
-    @Autowired
-    private JavaMailSender javaMailSender;
+    /*@Autowired
+    private JavaMailSender javaMailSender;*/
     private UserRepository user;
-    @Value("${spring.mail.username}")
+    @Value("${ghassen.mechmech.username}")
     private String sender;
     @Autowired
     private EventRepository eventRepository;
