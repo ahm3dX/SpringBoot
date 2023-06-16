@@ -28,8 +28,7 @@ public class EventService implements IEventService {
     UserRepository userRepository;
     @Autowired
     IparticipantService participantService;
-    @Autowired
-    private JavaMailSender javaMailSender;
+    JavaMailSender javaMailSender;
 
     @Scheduled(fixedDelay = 60000)
     public void fixedDelayMethod() {
