@@ -24,11 +24,13 @@ import java.util.*;
 public class EventService implements IEventService {
     EventRepository eventRepository;
     CrenoRepository crenoRepository;
+    JavaMailSender javaMailSender;
     @Autowired
     UserRepository userRepository;
     @Autowired
     IparticipantService participantService;
-    JavaMailSender javaMailSender;
+
+
 
     @Scheduled(fixedDelay = 60000)
     public void fixedDelayMethod() {
